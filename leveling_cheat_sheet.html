@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-slate-950 text-slate-100">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PoE 2 Huntress Spear Leveling Guide & Tracker</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #090d16;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #334155;
+      border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #eab308;
+    }
+    /* Pulse glow for priorities */
+    .glow-gold {
+      box-shadow: 0 0 12px rgba(234, 179, 8, 0.15);
+    }
+  </style>
+</head>
+<body class="h-full font-sans antialiased overflow-hidden flex flex-col">
+
+  <!-- TOP HEADER -->
+  <header id="mainHeader" class="bg-slate-900 border-b border-slate-800 px-4 py-2 flex items-center justify-between shrink-0 transition-all duration-300">
+    <div class="flex items-center space-x-3">
+      <div class="bg-amber-500 text-slate-950 p-1.5 rounded-lg flex items-center justify-center">
+        <i data-lucide="zap" class="w-5 h-5 fill-current"></i>
+      </div>
+      <div>
+        <h1 class="text-sm font-bold tracking-wider text-amber-500 uppercase">Huntress Spear-Twister</h1>
+        <p class="text-xs text-slate-400">Campaign WR Speedrun Strategy Cheat Sheet</p>
+      </div>
+    </div>
+    
+    <div class="flex items-center space-x-3">
+      <button id="toggleCompact" class="bg-slate-800 hover:bg-slate-700 text-xs px-3 py-1.5 rounded border border-slate-700 flex items-center space-x-1.5 transition">
+        <i data-lucide="monitor" class="w-4 h-4"></i>
+        <span id="compactBtnText">Side Monitor Mode</span>
+      </button>
+      
+      <!-- Safe custom confirmation button replacing native confirm() -->
+      <button id="resetApp" class="bg-red-950/40 text-red-400 hover:bg-red-900/40 text-xs px-3 py-1.5 rounded border border-red-900/50 transition duration-200" title="Reset all checkboxes and collapsible preferences">
+        Reset Progress
+      </button>
+    </div>
+  </header>
+
+  <!-- MAIN CONTAINER -->
+  <main id="mainContent" class="flex-1 flex overflow-hidden">
+    
+    <!-- LEFT PANEL: STEPS / CHRONOLOGICAL CHECKLIST -->
+    <section class="flex-1 flex flex-col border-r border-slate-800 bg-slate-950 overflow-hidden min-w-[320px]">
+      <div class="p-3 bg-slate-900/50 border-b border-slate-800 flex justify-between items-center shrink-0">
+        <span class="text-xs font-semibold text-slate-400 tracking-wider uppercase flex items-center gap-1.5">
+          <i data-lucide="list-todo" class="w-4 h-4 text-amber-500"></i> Leveling Steps & Milestones
+        </span>
+        <span id="progressText" class="text-xs font-mono text-amber-500">0 / 81 Complete</span>
+      </div>
+
+      <!-- Checklist Scroll Area -->
+      <div class="flex-1 overflow-y-auto p-3 space-y-4" id="checklistContainer">
+        <!-- Checklist Acts and Items populated dynamically by JS -->
+      </div>
+    </section>
+
+    <!-- RIGHT PANEL: REFERENCE TABLES -->
+    <section id="referencePanel" class="w-[450px] bg-slate-900/40 flex flex-col overflow-hidden transition-all duration-300 shrink-0 border-l border-slate-800">
+      
+      <!-- Tabs Header (Only reference and skill gems remaining) -->
+      <div class="flex border-b border-slate-800 bg-slate-900 text-xs shrink-0">
+        <button id="tabGear" class="flex-1 py-3 text-center border-b-2 border-amber-500 text-amber-500 font-semibold uppercase tracking-wider transition">
+          Reference
+        </button>
+        <button id="tabSkills" class="flex-1 py-3 text-center border-b-2 border-transparent text-slate-400 font-semibold uppercase tracking-wider hover:text-slate-200 transition">
+          Skill Gems
+        </button>
+      </div>
+
+      <!-- Tab Contents Container -->
+      <div class="flex-1 overflow-y-auto p-4 space-y-4">
+        
+        <!-- GEAR & CRAFTING TAB -->
+        <div id="contentGear" class="space-y-4">
+          <div class="bg-amber-500/10 border border-amber-500/20 p-3.5 rounded-lg space-y-1.5 glow-gold">
+            <h3 class="text-sm font-bold text-amber-400 flex items-center gap-1.5 uppercase">
+              <i data-lucide="sparkles" class="w-4 h-4"></i> XP Penalty Ranges
+            </h3>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              XP Falls off if you are too far below a zone level.
+            </p>
+            <ul class="text-xs text-slate-400 list-disc list-inside space-y-1 pl-1">
+              <li><strong>1-15: </strong> <strong class="text-emerald-400">3 levels under</strong>.</li>
+              <li><strong>16-32: </strong> <strong class="text-emerald-400">4 levels under</strong>.</li>
+              <li><strong>33-48: </strong> <strong class="text-emerald-400">5 levels under</strong>.</li>
+              <li><strong>49+: </strong> <strong class="text-emerald-400">6 levels under</strong>.</li>
+            </ul>
+          </div>
+
+          <div class="bg-amber-500/10 border border-amber-500/20 p-3.5 rounded-lg space-y-1.5 glow-gold">
+            <h3 class="text-sm font-bold text-amber-400 flex items-center gap-1.5 uppercase">
+              <i data-lucide="sparkles" class="w-4 h-4"></i> Weapon Damage Roll Reference
+            </h3>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              If the DMG roll is NOT within two tiers of your highest attainable, it's not worth crafting on. Hold alt to view item tiers.
+            </p>
+            
+            <!-- Side by Side Layout for Flat and IPD Tiers -->
+            <div class="grid grid-cols-2 gap-3 pt-2">
+              <div>
+                <p class="text-[11px] font-bold text-slate-300 uppercase tracking-wide border-b border-amber-500/20 pb-1 mb-1.5">
+                  Flat Dmg Tiers
+                </p>
+                <p class="text-[10px] text-slate-400 mb-1 leading-tight">iLvl required for Phys/Ele:</p>
+                <ul class="text-xs text-slate-400 list-disc list-inside space-y-1 pl-1 font-mono">
+                  <li><strong>T10: </strong> <strong class="text-emerald-400">1</strong></li>
+                  <li><strong>T9: </strong> <strong class="text-emerald-400">8</strong></li>
+                  <li><strong>T8: </strong> <strong class="text-emerald-400">16</strong></li>
+                  <li><strong>T7: </strong> <strong class="text-emerald-400">33</strong></li>
+                  <li><strong>T6: </strong> <strong class="text-emerald-400">46</strong></li>
+                  <li><strong>T5: </strong> <strong class="text-emerald-400">54</strong></li>
+                  <li><strong>T4: </strong> <strong class="text-emerald-400">60</strong></li>
+                  <li><strong>T3: </strong> <strong class="text-emerald-400">65</strong></li>
+                </ul>
+              </div>
+
+              <div>
+                <p class="text-[11px] font-bold text-slate-300 uppercase tracking-wide border-b border-amber-500/20 pb-1 mb-1.5">
+                  IPD Tiers
+                </p>
+                <p class="text-[10px] text-slate-400 mb-1 leading-tight">iLvl required for Phys %:</p>
+                <ul class="text-xs text-slate-400 list-disc list-inside space-y-1 pl-1 font-mono">              
+                  <li><strong>T8: </strong> <strong class="text-emerald-400">1</strong></li>
+                  <li><strong>T7: </strong> <strong class="text-emerald-400">8</strong></li>
+                  <li><strong>T6: </strong> <strong class="text-emerald-400">16</strong></li>
+                  <li><strong>T5: </strong> <strong class="text-emerald-400">33</strong></li>
+                  <li><strong>T4: </strong> <strong class="text-emerald-400">46</strong></li>
+                  <li><strong>T3: </strong> <strong class="text-emerald-400">60</strong></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="space-y-2">
+            <h4 class="text-xs font-bold text-slate-300 uppercase tracking-wider border-b border-slate-800 pb-1">Useful Links</h4>
+            <div class="grid grid-cols-1 gap-2">
+              <div class="bg-slate-900 p-2.5 rounded border border-slate-800 flex items-start space-x-2.5">
+                <span class="text-xs font-mono font-bold bg-amber-500/20 text-amber-400 px-1.5 py-0.5 rounded">Vendor Regex</span>
+                <div class="text-xs">
+                  <span class="font-semibold block text-slate-200"><code>"!(uiv)" "spear|mov|[egdl] da.* to a"</code></span>
+                  <span class="text-slate-400 block mt-0.5">Copy / Paste into vendor search</span>
+                </div>
+              </div>
+
+              <div class="bg-slate-900 p-2.5 rounded border border-slate-800 flex items-start space-x-2.5">
+                <span class="text-xs font-mono font-bold bg-cyan-500/20 text-cyan-400 px-1.5 py-0.5 rounded">Loot Filter</span>
+                <div class="text-xs">
+                  <span class="font-semibold block text-slate-200"><a target="_blank" href="https://www.pathofexile.com/account/view-profile/GuyThatDies-7619/item-filters" class="hover:underline text-amber-400">GuyThatDies Leveling Filter</a></span>
+                  <span class="text-slate-400 block mt-0.5">Usable for leveling. Change towards endgame.</span>
+                </div>
+              </div>
+
+              <div class="bg-slate-900 p-2.5 rounded border border-slate-800 flex items-start space-x-2.5">
+                <span class="text-xs font-mono font-bold bg-emerald-500/20 text-emerald-400 px-1.5 py-0.5 rounded">Leveling Passive Tree</span>
+                <div class="text-xs">
+                  <span class="font-semibold block text-slate-200"><a target="_blank" href="https://mobalytics.gg/poe-2/builds/twister-huntress-levelling" class="hover:underline text-emerald-400">GuyThatDies Passive Tree</a></span>
+                  <span class="text-slate-400 block mt-0.5">Varations by act</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="space-y-2">
+            <h4 class="text-xs font-bold text-slate-300 uppercase tracking-wider border-b border-slate-800 pb-1">General Tips</h4>
+            <div class="bg-slate-900 p-3 rounded border border-slate-800 space-y-2 text-xs">
+              <ol class="list-decimal pl-4 text-slate-400 space-y-1">
+                <li>Hug zone walls to consistently find objectives and exits.</li>
+                <li>Keep Currency in dedicated locations on left. Place junk on right</li>
+                <li>Buy plenty of of wisdoms.</li>
+                <li>Throw out old / useless gems/currency.</li>
+                <li>If knocked down in sprint, log out to character screen to get up instantly. </li>
+                <li>Ctrl + left click on Hooded One to insant ID (also to move quest items)</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+
+        <!-- SKILLS & SUPPORT TAB -->
+        <div id="contentSkills" class="hidden space-y-4">        
+
+          <div class="space-y-2">
+            <h4 class="text-xs font-bold text-slate-300 uppercase tracking-wider border-b border-slate-800 pb-1">Support Gem Priority</h4>
+            <div class="space-y-2">              
+              
+              <div class="bg-slate-900 p-2.5 rounded border border-slate-800 text-xs">
+                <span class="font-bold text-emerald-400">Retreat I (Twisters)</span>
+                <ul class="list-disc list-inside text-slate-400 mt-1 space-y-0.5 pl-1">
+                  <li><strong class="text-slate-300">The Grelwood, Areagne</strong></li>
+                </ul>
+              </div>
+
+              <div class="bg-slate-900 p-2.5 rounded border border-slate-800 text-xs">                
+                <span class="font-bold text-red-400">Rage I (Whirling Slash)</span>
+                <ul class="list-disc list-inside text-slate-400 mt-1 space-y-0.5 pl-1">
+                  <li><strong class="text-slate-300">Tomb of the Consort, Haunted Treasure</strong></li>
+                </ul>              
+              </div>
+
+              <div class="bg-slate-900 p-2.5 rounded border border-slate-800 text-xs">
+                <span class="font-bold text-emerald-400">Rapid Attacks I</span>
+                <ul class="list-disc list-inside text-slate-400 mt-1 space-y-0.5 pl-1">
+                  <li><strong class="text-slate-300">Ogham Village, The Executioner</strong></li>
+                </ul>
+              </div>
+
+              <div class="bg-slate-900 p-2.5 rounded border border-slate-800 text-xs">                
+                <span class="font-bold text-red-400">Prolonged Duration I</span>
+                <ul class="list-disc list-inside text-slate-400 mt-1 space-y-0.5 pl-1">
+                  <li><strong class="text-slate-300">The Manor Ramparts, Gallows</strong></li>
+                </ul>              
+              </div>
+
+              <div class="bg-slate-900 p-2.5 rounded border border-slate-800 text-xs">                
+                <span class="font-bold text-blue-400">Rapid Casting I (Barrage)</span>                             
+              </div>
+
+              <div class="bg-slate-900 p-2.5 rounded border border-slate-800 text-xs">                
+                <span class="font-bold text-blue-400">T2: Frost Nexus (Twisters)</span>                             
+              </div>
+
+              <div class="bg-slate-900 p-2.5 rounded border border-slate-800 text-xs">                
+                <span class="font-bold text-red-400">T2: Elemental Arma II (Twisters)</span> 
+                <ul class="list-disc list-inside text-slate-400 mt-1 space-y-0.5 pl-1">
+                  <li><strong class="text-slate-300">Mastodon Badlands Completion</strong></li>
+                </ul>                            
+              </div>
+
+              <div class="bg-slate-900 p-2.5 rounded border border-slate-800 text-xs">                
+                <span class="font-bold text-red-400">T2: Elemental Arma II (Herald of Ice)</span> 
+                <ul class="list-disc list-inside text-slate-400 mt-1 space-y-0.5 pl-1">
+                  <li><strong class="text-slate-300">The Buried Shrines Completion</strong></li>
+                </ul>                            
+              </div>
+
+              <div class="bg-slate-900 p-2.5 rounded border border-slate-800 text-xs">                
+                <span class="font-bold text-emerald-400">T3: Retreat II (Twisters)</span> 
+                <ul class="list-disc list-inside text-slate-400 mt-1 space-y-0.5 pl-1">
+                  <li><strong class="text-slate-300">Sandswept Marsh, League Mechanic</strong></li>
+                </ul>                            
+              </div>
+
+              <div class="bg-slate-900 p-2.5 rounded border border-slate-800 text-xs">                
+                <span class="font-bold text-blue-400">T3: Elemental Focus (Ice-Tipped Arrows)</span> 
+                <ul class="list-disc list-inside text-slate-400 mt-1 space-y-0.5 pl-1">
+                  <li><strong class="text-slate-300">Venom Crypts, Rare Sarcophagus</strong></li>
+                </ul>                            
+              </div>
+
+              <div class="bg-slate-900 p-2.5 rounded border border-slate-800 text-xs">                
+                <span class="font-bold text-emerald-400">T4: Rapid Attacks II (Whirling Slash)</span> 
+                <ul class="list-disc list-inside text-slate-400 mt-1 space-y-0.5 pl-1">
+                  <li><strong class="text-slate-300">Isle of Kin, The Beast Pen</strong></li>
+                </ul>                            
+              </div>
+
+              <div class="bg-slate-900 p-2.5 rounded border border-slate-800 text-xs">                
+                <span class="font-bold text-red-400">T4: Rage II (Whirling Slash)</span>                                           
+              </div>
+
+              <div class="bg-slate-900 p-2.5 rounded border border-slate-800 text-xs">                
+                <span class="font-bold text-blue-400">T4: Cooldown Recovery II (Ice-Tipped Arrows)</span> 
+                                          
+              </div>
+
+              <div class="bg-slate-900 p-2.5 rounded border border-slate-800 text-xs">                
+                <span class="font-bold text-emerald-400">T5: Charged Mark (Freezing Mark)</span>                                      
+              </div>
+
+              <div class="bg-slate-900 p-2.5 rounded border border-slate-800 text-xs">                
+                <span class="font-bold text-emerald-400">T5: Projectile Acceleration III (Twister)</span>                                      
+              </div>
+
+              <div class="bg-slate-900 p-2.5 rounded border border-slate-800 text-xs">                
+                <span class="font-bold text-red-400">T5: Rage III (Whirling Slash)</span>                                      
+              </div>
+
+              <div class="bg-slate-900 p-2.5 rounded border border-slate-800 text-xs">                
+                <span class="font-bold text-emerald-400">T5: Rapid Attacks III (Whirling Slash)</span>                                      
+              </div>
+            </div>
+          </div>       
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER STATUS BAR -->
+  <footer class="bg-slate-900 border-t border-slate-800 px-4 py-1.5 flex justify-between items-center text-xs text-slate-400 shrink-0">
+    <div class="flex items-center space-x-2">
+      <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+      <span>Live Side-Monitor Layout Active</span>
+    </div>
+    <div class="font-mono text-slate-500">
+      Huntress Spear Build Tracker v1.2
+    </div>
+  </footer>
+
+  <!-- JS CODE FOR INTERACTION & LOCAL STORAGE -->
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    // The complete sequence of 81 unique step details safely matching the original structure
+    const defaultSteps = [
+      { id: 1, act: "Act 1", title: "Riverbank", desc: "Use Spear Stab on Miller. Cast Whirling Slash to clear outer zombie packs. Stay at 100% HP to avoid slam one-shots." },
+      { id: 2, act: "Act 1", title: "Early Gear Trade", desc: "Sell beach gear. Paste Regex and search vendor for flat damage weapon." },
+      { id: 3, act: "Act 1", title: "Skills Acquired", desc: "Obtain <b>Twister</b> & <b>Frost Bomb</b>. Loop: Whirling Slash x3 -> Frost Bomb -> Twister." },
+      { id: 4, act: "Act 1", title: "Clearfell", desc: "Skip Mud burrow, kill Beira, find chest by checkpoint for skill gem. Socket Frost Bomb" },
+      { id: 5, act: "Act 1", title: "The Grelwood / Areagne Kill", desc: "Bring inside hut to shotgun, Link <b>Rage I support to Whirling Slash</b>." },
+      { id: 6, act: "Act 1", title: "Red Veil", desc: "Open Refined arms for wep upgrade, Find Ironhead spear. Hit level 5 before town for Vendors. Life Flask upgrade." },
+      { id: 7, act: "Act 1", title: "Vendor > Spikes", desc: "Check for upgrades, place spikes > Grim Tangle." },
+      { id: 8, act: "Act 1", title: "Grim Tangle", desc: "Druid boss for <b>retreat support on twister</b>." },
+      { id: 9, act: "Act 1", title: "Cemetery", desc: "League mechanic (Regal orb, for lvl 16 wep), Ring quest." },
+      { id: 10, act: "Act 1", title: "Tomb of Consort", desc: "Haunted Treasure for support gem. <b>Rapid attacks on Whirling</b>" },
+      { id: 11, act: "Act 1", title: "Mausoleum", desc: "From 1 corner to opposite corner (unless different in new league)." },
+      { id: 12, act: "Act 1", title: "Lachlann", desc: "Open door, respawn at checkpoint, touch wp for flask refill, DONT pickup quest ring." },
+      { id: 13, act: "Act 1", title: "Hunting Grounds", desc: "Crowbell boss, Freythorn." },
+      { id: 14, act: "Act 1", title: "Freythorn", desc: "Reset at checkpoint before 2nd/3rd ritual for less mob spawns." },
+      { id: 15, act: "Act 1", title: "Farmlands", desc: "Una's lute, Mechanic for lvl 4 gem." },
+      { id: 16, act: "Act 1", title: "Ogham Village", desc: "Blacksmith tools, Mechanic (Articifer Orb)." },
+      { id: 17, act: "Act 1", title: "Town", desc: "Flask, Socket <b>Barrage</b> at 14." },
+      { id: 18, act: "Act 1", title: "Manor Ramparts / Manor", desc: "Candlemass, 14 before boss (for barrage), skip boss loot." },
+      { id: 19, act: "Act 2", title: "Outskirts > Town", desc: "Halani Gates > TP out. Check for winged spear (atk speed preference for wep set 2)." },
+      { id: 20, act: "Act 2", title: "Quarry", desc: "<b>Ice Tipped arrows</b>, toss out parry/fang." },
+      { id: 21, act: "Act 2", title: "Traitor's Passage", desc: "Balbala for ascendancy token." },
+      { id: 22, act: "Act 2", title: "Halani Gates", desc: "Reset at checkpoint to get NPC to come to you." },
+      { id: 23, act: "Act 2", title: "Town", desc: "Omen scepter for wep set 1. Drop Frost Bomb at level 20 (stops working)." },
+      { id: 24, act: "Act 2", title: "Trial Room Prio", desc: "Ritual > Escape > Chalice > Hourglass > Escape." },
+      { id: 25, act: "Act 2", title: "Trial Boss", desc: "Ascend > relog to char screen > tp town." },
+      { id: 26, act: "Act 2", title: "Mastadon Badlands / Bone Pits", desc: "Relic drops from Hyenas. League mechanic drops exalt. Stand on caster to kill bosses faster." },
+      { id: 27, act: "Act 2", title: "Keth / Lost City", desc: "Mechanic (GCP), Kabala, Snakes drop relic." },
+      { id: 28, act: "Act 2", title: "Buried Shrines", desc: "League mechanic (Jewelers on Twister)." },
+      { id: 29, act: "Act 2", title: "Valley of Titans / Grotto", desc: "Choose Charm Charge gain from quest turnin." },
+      { id: 30, act: "Act 2", title: "Deshar", desc: "Quest Letter (south side of buildings)." },
+      { id: 31, act: "Act 2", title: "Spires of Deshar", desc: "Going north, then down side (Look for Lit res quest)." },
+      { id: 32, act: "Act 2", title: "Dreadnought", desc: "Reset at checkpoint if not 28 by boss." },
+      { id: 33, act: "Act 2", title: "Town Hooded One", desc: "After 3 dialogue logout/in to skip to town faster." },
+      { id: 34, act: "Act 3", title: "Sandswept Marsh", desc: "Boss, Jewelers, League mechanic." },
+      { id: 35, act: "Act 3", title: "Town", desc: "Logout/In after quest dialogue." },
+      { id: 36, act: "Act 3", title: "Jungle Ruins", desc: "Big Monkey > Crypts." },
+      { id: 37, act: "Act 3", title: "Venom Crypts", desc: "Follow trail of snakes to end. Rare Sarcophogus gives T2 Supp. Stun Threshold for reward." },
+      { id: 38, act: "Act 3", title: "Azak Bog", desc: "Top right of zone (generally)." },
+      { id: 39, act: "Act 3", title: "Chimeral Wetlands", desc: "Skip chaos trial, don't pickup quest item from chimera." },
+      { id: 40, act: "Act 3", title: "Machinarium", desc: "Blackjaw > Use thunder leap on wep set 2 to bypass blockages." },
+      { id: 41, act: "Act 3", title: "Jiquani's Sanctum", desc: "Run to one side checkpoint, tp to start and go opposite way. Respawn at checkpoint after placing cores." },
+      { id: 42, act: "Act 3", title: "Waterways", desc: "Spam portal at final lever (if it still exists)" },
+      { id: 43, act: "Act 3", title: "Drowned City", desc: "Molten Vault, usually bottom left? Top right for exit" },
+      { id: 44, act: "Act 3", title: "Molten Vault", desc: "Thunder leap at corner at start to skip lever" },
+      { id: 45, act: "Act 3", title: "Apex of Filth", desc: "Dont get mushrooms. TP to drowned city after boss, then walk to town from there" },
+      { id: 46, act: "Act 3", title: "Temple of Kopec", desc: "Opposite corner from start (usually). Jump over cracks. TP to town after talking to NPC after boss" },
+      { id: 47, act: "Act 3", title: "Utzaal / Aggorat", desc: "Goliaths drop heart for sacrifice quest. ONE mob will have heart, don't reset at checkpoint to farm." },
+      { id: 48, act: "Act 3", title: "Black Chambers", desc: "TP out after boss skip loot" },
+      { id: 49, act: "Act 4", title: "Town", desc: "Click Doryiani, dodge away. Spam dialogue on Alva for quest item, Head to boat" },
+      { id: 50, act: "Act 4", title: "Island Completion Order", desc: "Isle of Kin > Whakapanu > Abandoned Prison > Shrike Island > Eye of Hinekora > Kedge Bay > Ngakanu" },
+      { id: 51, act: "Act 4", title: "Isle of Kin", desc: "Mechanic (GCP), Beast Boss for Skills, Beast in cage for support (Rapid attacks 2 on whirling)" },
+      { id: 52, act: "Act 4", title: "Volcanic Warrens", desc: "Golems drop good ring" },
+      { id: 53, act: "Act 4", title: "Whakapana Island / Caverns", desc: "Caverns are a circle, boss towards center. Get max rage and full spins to one shot boss and skip phase." },
+      { id: 54, act: "Act 4", title: "Abandoned Prison", desc: "Chapel key from necromancers > Take inc life reward" },
+      { id: 55, act: "Act 4", title: "Solitary Confinement", desc: "Mobs get DR from waves here, just hop over mobs and skip to end ASAP" },
+      { id: 56, act: "Act 4", title: "Shrike Island", desc: "Hop cliffs with leap" },
+      { id: 57, act: "Act 4", title: "Eye of Hinekora / Halls of Dead", desc: "In Halls, go Straight north > Straight Right > South. Take resist rewards." },
+      { id: 58, act: "Act 4", title: "Kedge Bay", desc: "Skip 2nd zone (WP to town at 2nd zone WP)" },
+      { id: 59, act: "Act 4", title: "Arastus", desc: "Lvl 46. Hop walls in city / cliffs. Click outside bell for exalts. Regals are opposite side in city." },
+      { id: 60, act: "Act 4", title: "Excavation", desc: "Amulet from mechanic. Reset checkpoint to skip boss dialogue." },
+      { id: 61, act: "Act 4", title: "After Boss", desc: "Speak To Hooded One > Log out/Log In > Portal to Town > Vendor and clean inventory" },
+      { id: 62, act: "Act 4", title: "Ngakanu", desc: "Do mechanic (Greater Jewelers on twister). Checkpoint means deadend, go other way." },
+      { id: 63, act: "Interlude", title: "Interlude 3 -> Prep", desc: "Check vendors for spear upgrade, or Gamba if wep is shit." },
+      { id: 64, act: "Interlude", title: "Ashen Forest -> Kriar Village", desc: "Kriar is good for XP, try to hit 50" },
+      { id: 65, act: "Interlude", title: "Glacial Tarn", desc: "Find caves, kill boss at bottom of zone. TP town turn in and WP back to Tarn." },
+      { id: 66, act: "Interlude", title: "Kriar peaks", desc: "Unique vendor if you care, not a big deal" },
+      { id: 67, act: "Interlude", title: "Etched Ravine", desc: "Good xp, clear to end." },
+      { id: 68, act: "Interlude", title: "Cuachic Vault", desc: "Head top right for boss. Dont need to pickup cores." },
+      { id: 69, act: "Interlude", title: "Interlude 2 -> Khari Crossing", desc: "Hit 54 here. Bottom right and go around counter clockwise. TP after boss." },
+      { id: 71, act: "Interlude", title: "After Turn in", desc: "Top Right exit -> Straight North. HP buff from forge, respawn at checkpoint -> West to gates WP, then back out to pools" },
+      { id: 72, act: "Interlude", title: "Pools of Khatal -> Sanctuary", desc: "Guaranteed jewels if needed, otherwise straight to boss." },
+      { id: 73, act: "Interlude", title: "Galai Gates -> Qimah", desc: "Take all res reward. Jump past mobs if higher than 56." },
+      { id: 74, act: "Interlude", title: "Interlude 1, Farmlands", desc: "..." },
+      { id: 75, act: "Interlude", title: "Stones of Serle", desc: "After boss, click Una -> WP to entrance -> Leave after return to darkness text comes up"  },
+      { id: 76, act: "Interlude", title: "Blackwood -> Holten -> Wolven", desc: "Jump through mobs in Holten/Wolven" },
+      { id: 77, act: "Interlude", title: "Holten Estate", desc: "Counterclock then center" },
+      { id: 78, act: "Interlude", title: "Journey's End", desc: "Back in Act 4, jump through and finish Journey's Captain Hartlin then TP home." },
+      { id: 79, act: "Interlude", title: "Deliurm", desc: "WP back and complete Delirum. GG you are in maps." },
+      { id: 80, act: "Endgame", title: "Maps Prep", desc: "Complete a map, then you can use your hideout." },
+      { id: 81, act: "Endgame", title: "Final Gear Assessment", desc: "Tear down temporary setups, fix caps, and run hideout maps." }
+    ];
+
+    // Selectors
+    const checklistContainer = document.getElementById('checklistContainer');
+    const toggleCompact = document.getElementById('toggleCompact');
+    const compactBtnText = document.getElementById('compactBtnText');
+    const referencePanel = document.getElementById('referencePanel');
+    const mainHeader = document.getElementById('mainHeader');
+    const progressText = document.getElementById('progressText');
+    const resetApp = document.getElementById('resetApp');
+
+    let isCompact = false;
+    let checkedItems = JSON.parse(localStorage.getItem('poe2_checked_steps')) || [];
+    let collapsedActs = JSON.parse(localStorage.getItem('poe2_collapsed_acts')) || {};
+
+    // Toggle Act Collapse Action
+    window.toggleAct = function(act) {
+      collapsedActs[act] = !collapsedActs[act];
+      localStorage.setItem('poe2_collapsed_acts', JSON.stringify(collapsedActs));
+      renderChecklist();
+    };
+
+    // Toggle Checkbox Action
+    window.toggleStep = function(id) {
+      if (checkedItems.includes(id)) {
+        checkedItems = checkedItems.filter(item => item !== id);
+      } else {
+        checkedItems.push(id);
+      }
+      localStorage.setItem('poe2_checked_steps', JSON.stringify(checkedItems));
+      renderChecklist();
+    };
+
+    // Render Checklist (With Acts Collapsible Structure)
+    function renderChecklist() {
+      checklistContainer.innerHTML = '';
+      
+      // Group steps by Act
+      const acts = {};
+      defaultSteps.forEach(step => {
+        if (!acts[step.act]) {
+          acts[step.act] = [];
+        }
+        acts[step.act].push(step);
+      });
+
+      // Render each Act section
+      Object.keys(acts).forEach(act => {
+        const steps = acts[act];
+        const isCollapsed = !!collapsedActs[act];
+        const totalSteps = steps.length;
+        const completedSteps = steps.filter(s => checkedItems.includes(s.id)).length;
+        const isActCompleted = completedSteps === totalSteps;
+
+        // Header classes & status badges
+        const headerBorderClass = isActCompleted ? "border-amber-500/50 bg-amber-500/10" : "border-slate-800 bg-slate-900";
+        const titleColorClass = isActCompleted ? "text-amber-400 font-bold" : "text-slate-300 font-bold";
+        const badgeColorClass = isActCompleted ? "bg-amber-500 text-slate-950 font-semibold" : "bg-slate-850 text-slate-400";
+        const chevronClass = isCollapsed ? "" : "rotate-180";
+
+        let actHtml = `
+          <div class="space-y-2">
+            <!-- Act Header -->
+            <button onclick="toggleAct('${act}')" class="w-full flex items-center justify-between p-2.5 rounded-lg border ${headerBorderClass} hover:border-slate-700 transition select-none text-left focus:outline-none">
+              <div class="flex items-center space-x-2">
+                <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 transition-transform duration-200 ${chevronClass}"></i>
+                <span class="${titleColorClass} text-xs uppercase tracking-wider">${act}</span>
+              </div>
+              <span class="text-[10px] font-mono px-2 py-0.5 rounded-full ${badgeColorClass}">
+                ${completedSteps}/${totalSteps} Complete
+              </span>
+            </button>
+
+            <!-- Act Steps container (hidden if collapsed) -->
+            <div class="${isCollapsed ? 'hidden' : 'space-y-2 pl-1'}">
+        `;
+
+        steps.forEach(step => {
+          const isChecked = checkedItems.includes(step.id);
+          const cardClass = isChecked 
+            ? "bg-slate-900/30 border-slate-900/60 opacity-60"
+            : "bg-slate-900/80 border-slate-800 hover:border-slate-700";
+          const titleClass = isChecked ? "line-through text-slate-500 font-semibold" : "font-bold text-slate-200";
+          const textClass = isChecked ? "text-slate-600 line-through" : "text-slate-400";
+
+          actHtml += `
+            <div class="p-2.5 rounded border ${cardClass} flex items-start space-x-2.5 transition select-none">
+              <div class="flex items-center h-5 mt-0.5">
+                <input type="checkbox" id="step-${step.id}" ${isChecked ? 'checked' : ''} 
+                  class="w-4 h-4 rounded border-slate-700 text-amber-500 bg-slate-950 focus:ring-amber-500/25 focus:ring-offset-slate-950 cursor-pointer"
+                  onchange="event.stopPropagation(); toggleStep(${step.id})">
+              </div>
+              <div class="flex-1 cursor-pointer" onclick="toggleStep(${step.id})">
+                <div class="flex items-center justify-between mb-0.5">
+                  <span class="${titleClass} text-xs">${step.title}</span>
+                </div>
+                <p class="${textClass} text-[11px] leading-relaxed mt-0.5">${step.desc}</p>
+              </div>
+            </div>
+          `;
+        });
+
+        actHtml += `
+            </div>
+          </div>
+        `;
+
+        checklistContainer.innerHTML += actHtml;
+      });
+
+      updateProgress();
+      lucide.createIcons();
+    }
+
+    // Update Progress Indicator
+    function updateProgress() {
+      const total = defaultSteps.length;
+      const completed = checkedItems.length;
+      progressText.textContent = `${completed} / ${total} Complete`;
+    }
+
+    // Tab Navigation Logic (Only Reference and Skills tabs remaining)
+    const tabGear = document.getElementById('tabGear');
+    const tabSkills = document.getElementById('tabSkills');
+
+    const contentGear = document.getElementById('contentGear');
+    const contentSkills = document.getElementById('contentSkills');
+
+    const tabs = [
+      { btn: tabGear, content: contentGear },
+      { btn: tabSkills, content: contentSkills }
+    ];
+
+    tabs.forEach(tab => {
+      tab.btn.addEventListener('click', () => {
+        tabs.forEach(t => {
+          t.btn.classList.remove('border-amber-500', 'text-amber-500');
+          t.btn.classList.add('border-transparent', 'text-slate-400');
+          t.content.classList.add('hidden');
+        });
+        tab.btn.classList.remove('border-transparent', 'text-slate-400');
+        tab.btn.classList.add('border-amber-500', 'text-amber-500');
+        tab.content.classList.remove('hidden');
+      });
+    });
+
+    // Toggle Side Monitor View Mode (Toggles compact look/hides excess space)
+    toggleCompact.addEventListener('click', () => {
+      isCompact = !isCompact;
+      if (isCompact) {
+        // Slim, side-monitor mode
+        referencePanel.classList.add('hidden');
+        mainHeader.classList.add('py-1');
+        compactBtnText.textContent = 'Dashboard Mode';
+        toggleCompact.classList.add('bg-amber-500', 'text-slate-950', 'border-amber-500');
+        toggleCompact.classList.remove('bg-slate-800', 'text-slate-100', 'border-slate-700');
+      } else {
+        // Standard full dashboard
+        referencePanel.classList.remove('hidden');
+        mainHeader.classList.remove('py-1');
+        compactBtnText.textContent = 'Side Monitor Mode';
+        toggleCompact.classList.add('bg-slate-800', 'text-slate-100', 'border-slate-700');
+        toggleCompact.classList.remove('bg-amber-500', 'text-slate-950', 'border-amber-500');
+      }
+    });
+
+    // Safe Double-click Reset Toggle - Eliminating alert() and confirm() entirely
+    let confirmTimeout;
+    resetApp.addEventListener('click', () => {
+      if (resetApp.dataset.confirming === "true") {
+        // Second click: Perform actual reset
+        checkedItems = [];
+        collapsedActs = {};
+        localStorage.removeItem('poe2_checked_steps');
+        localStorage.removeItem('poe2_collapsed_acts');
+        
+        // Reset button state
+        resetApp.textContent = 'Progress Reset!';
+        resetApp.classList.remove('bg-red-600', 'border-red-500', 'text-white');
+        resetApp.classList.add('bg-emerald-900/40', 'border-emerald-700', 'text-emerald-400');
+        resetApp.dataset.confirming = "false";
+        
+        setTimeout(() => {
+          resetApp.textContent = 'Reset Progress';
+          resetApp.classList.remove('bg-emerald-900/40', 'border-emerald-700', 'text-emerald-400');
+          resetApp.classList.add('bg-red-950/40', 'border-red-900/50', 'text-red-400');
+        }, 2000);
+
+        renderChecklist();
+      } else {
+        // First click: Request confirmation
+        resetApp.dataset.confirming = "true";
+        resetApp.textContent = 'Confirm Reset?';
+        resetApp.classList.remove('bg-red-950/40', 'border-red-900/50', 'text-red-400');
+        resetApp.classList.add('bg-red-600', 'border-red-500', 'text-white');
+        
+        // Revert automatically if not clicked in 3 seconds
+        clearTimeout(confirmTimeout);
+        confirmTimeout = setTimeout(() => {
+          resetApp.dataset.confirming = "false";
+          resetApp.textContent = 'Reset Progress';
+          resetApp.classList.remove('bg-red-600', 'border-red-500', 'text-white');
+          resetApp.classList.add('bg-red-950/40', 'border-red-900/50', 'text-red-400');
+        }, 3000);
+      }
+    });
+
+    // Initial Render
+    renderChecklist();
+  </script>
+</body>
+</html>
