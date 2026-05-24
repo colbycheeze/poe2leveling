@@ -324,10 +324,67 @@
 
   <!-- JS CODE FOR INTERACTION & LOCAL STORAGE -->
   <script>
-    // Initialize Lucide Icons
+    document.addEventListener("DOMContentLoaded", function() {
     lucide.createIcons();
 
-    // The complete sequence of 81 unique step details safely matching the original structure
+    const BOSS_COLOR = '#af6025';
+    const QUEST_COLOR = '#4ae63a';
+    const SKILL_COLOR = '#1ba29b';
+    const LOOT_COLOR = '#ffff77';
+
+    const BOSSES = ['Kabala','Big Monkey','Blackjaw','Doryiani','Beast Boss','Miller','Beira','Crowbell','Candlemass'];
+    const QUEST_ITEMS = ["ascendancy token","Haunted Treasure","Una's Lute","Blacksmith tools","Quest letter"];
+    const SKILLS = ['Spear Stab','Whirling Slash','Frost Bomb','Twister','Ice Tipped Arrows','Ice-Tipped Arrows','Barrage'];
+    const LOOT_ITEMS = ['winged spear','Ironhead Spear','omen scepter','resist ring','Regal orb'];
+
+    const SUPPORT_COLORS = {
+      'Retreat': '#34d399',
+      'Rapid Attacks': '#34d399',
+      'Rapid Casting': '#60a5fa',
+      'Frost Nexus': '#60a5fa',
+      'Elemental Arma': '#f87171',
+      'Elemental Armament': '#f87171',
+      'Prolonged Duration': '#f87171',
+      'Rage': '#f87171',
+      'Elemental Focus': '#60a5fa',
+      'Cooldown Recovery': '#60a5fa',
+      'Charged Mark': '#34d399',
+      'Projectile Acceleration': '#34d399',
+    };
+
+    function colorizeText(html) {
+      let result = html;
+
+      Object.entries(SUPPORT_COLORS).forEach(([name, color]) => {
+        const regex = new RegExp(`\\b(${name})\\b`, 'g');
+        result = result.replace(regex, `<span style="color:${color};font-weight:600">$1</span>`);
+      });
+
+      SKILLS.forEach(name => {
+        const escaped = name.replace(/-/g, '[\\-]');
+        const regex = new RegExp(`\\b(${escaped})\\b`, 'gi');
+        result = result.replace(regex, `<span style="color:${SKILL_COLOR};font-weight:600">$1</span>`);
+      });
+
+      BOSSES.forEach(name => {
+        const regex = new RegExp(`\\b(${name})\\b`, 'g');
+        result = result.replace(regex, `<span style="color:${BOSS_COLOR};font-weight:600">$1</span>`);
+      });
+
+      QUEST_ITEMS.forEach(name => {
+        const escaped = name.replace(/'/g, "\\'");
+        const regex = new RegExp(`\\b(${name})\\b`, 'gi');
+        result = result.replace(regex, `<span style="color:${QUEST_COLOR};font-weight:600">$1</span>`);
+      });
+
+      LOOT_ITEMS.forEach(name => {
+        const regex = new RegExp(`\\b(${name})\\b`, 'gi');
+        result = result.replace(regex, `<span style="color:${LOOT_COLOR};font-weight:600">$1</span>`);
+      });
+
+      return result;
+    }
+
     const defaultSteps = [
       { id: 1, act: "Act 1", title: "Riverbank", desc: "Use Spear Stab on Miller. Cast Whirling Slash to clear outer zombie packs. Stay at 100% HP to avoid slam one-shots." },
       { id: 2, act: "Act 1", title: "Early Gear Trade", desc: "Sell beach gear. Paste Regex and search vendor for flat damage weapon." },
@@ -359,7 +416,7 @@
       { id: 28, act: "Act 2", title: "Buried Shrines", desc: "League mechanic (Jewelers on Twister). Resist ring near last checkpoint (Offering room)" },
       { id: 29, act: "Act 2", title: "Valley of Titans / Grotto", desc: "Choose Charm Charge gain from quest turnin." },
       { id: 30, act: "Act 2", title: "Deshar", desc: "Quest Letter (south side of buildings)." },
-      { id: 31, act: "Act 2", title: "Spires of Deshar", desc: "Going north, then down side (Look for Lit res quest)." },
+      { id: 31, act: "Act 2", title: "Spires of Deshar", desc: "Going north, then down side (Look for Lit res quest). Mechanic (GCP)" },
       { id: 32, act: "Act 2", title: "Dreadnought", desc: "Reset at checkpoint if not 28 by boss." },
       { id: 33, act: "Act 2", title: "Town Hooded One", desc: "After 3 dialogue logout/in to skip to town faster." },
       { id: 34, act: "Act 3", title: "Sandswept Marsh", desc: "Boss on sand area (Skill gem), Basket guarded by rares on grass area (Jewelers)" },
@@ -411,7 +468,7 @@
       { id: 81, act: "Endgame", title: "Final Gear Assessment", desc: "Tear down temporary setups, fix caps, and run hideout maps." }
     ];
 
-    // Selectors
+    
     const checklistContainer = document.getElementById('checklistContainer');
     const toggleCompact = document.getElementById('toggleCompact');
     const compactBtnText = document.getElementById('compactBtnText');
@@ -424,7 +481,7 @@
     let checkedItems = JSON.parse(localStorage.getItem('poe2_checked_steps')) || [];
     let collapsedActs = JSON.parse(localStorage.getItem('poe2_collapsed_acts')) || {};
 
-    // Toggle Act Collapse Action
+    
     window.toggleAct = function(act) {
       collapsedActs[act] = !collapsedActs[act];
       localStorage.setItem('poe2_collapsed_acts', JSON.stringify(collapsedActs));
@@ -488,6 +545,7 @@
 
         steps.forEach(step => {
           const isChecked = checkedItems.includes(step.id);
+          const colorizedDesc = colorizeText(step.desc);
           
           // SIGNIFICANTLY ENHANCED CONTRAST AND BOLDNESS FOR HIGH READABILITY
           const cardClass = isChecked 
@@ -512,8 +570,8 @@
               <div class="flex-1 cursor-pointer" onclick="toggleStep(${step.id})">
                 <div class="flex items-center justify-between mb-0.5">
                   <span class="${titleClass}">${step.title}</span>
-                </div>
-                <p class="${textClass}">${step.desc}</p>
+                </div>                
+                <p class="${textClass}">${colorizedDesc}</p>
               </div>
             </div>
           `;
@@ -658,6 +716,7 @@
 
     // Initial Render
     renderChecklist();
+    }); // end DOMContentLoaded
   </script>
 </body>
 </html>
