@@ -7,7 +7,7 @@
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Lucide Icons CDN -->
-  <script src="https://unpkg.com/lucide@latest" defer></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
   <style>
     /* Custom Scrollbar */
     ::-webkit-scrollbar {
@@ -116,7 +116,7 @@
               If the DMG roll is NOT within two tiers of your highest attainable, it's not worth crafting on. Hold alt to view item tiers.
             </p>
 
-            <p class="text-xs text-slate-300 leading-relaxed">
+            <div class="text-xs text-slate-300 leading-relaxed">
               <strong>Recommended Spear bases to use currency on:</strong>
               <ul class="text-xs text-slate-400 list-disc list-inside space-y-1 pl-1">
                 <li>Lvl 16 (Winged Spear, atk speed % for Whirling slash)</li>
@@ -124,7 +124,7 @@
                 <li>Lvl 45 (Crossblade Spear)</li>
                 <li>Lvl 65 (Helix Spear)</li>
               </ul>
-            </p>
+            </div>
             
             <!-- Side by Side Layout for Flat and IPD Tiers -->
             <div class="grid grid-cols-2 gap-3 pt-2">
@@ -189,7 +189,7 @@
               <div class="bg-slate-900 p-2.5 rounded border border-slate-800 flex items-start space-x-2.5">
                 <span class="text-xs font-mono font-bold bg-emerald-500/20 text-emerald-400 px-1.5 py-0.5 rounded">Leveling Passive Tree</span>
                 <div class="text-xs">
-                  <span class="font-semibold block text-slate-200"><a target="_blank" href="https://mobalytics.gg/poe-2/builds/twister-huntress-levelling#739a0a0f-6bd0-4807-8096-eee5ae1617ec-passive-tree-0" class="hover:underline text-emerald-400">GuyThatDies Passive Tree</a></span>
+                  <span class="font-semibold block text-slate-200"><a target="_blank" href="https://mobalytics.gg/poe-2/builds/twister-huntress-levelling" class="hover:underline text-emerald-400">GuyThatDies Passive Tree</a></span>
                   <span class="text-slate-400 block mt-0.5">Varations by act</span>
                 </div>
               </div>
@@ -213,164 +213,362 @@
 
         <!-- SKILLS & SUPPORT TAB -->
         <div id="contentSkills" class="hidden space-y-4">
+          <!-- Support Gem Priorities Organised in visual Tier Containers -->
           <div class="space-y-3">
             <h4 class="text-xs font-bold text-slate-300 uppercase tracking-wider border-b border-slate-800 pb-1">Support Gem Priority</h4>
-
-            <!-- Tier 1 -->
+            
+            <!-- Tier 1 Supports -->
             <div class="bg-slate-900/40 border border-slate-800 rounded-lg p-3 space-y-2">
               <div class="flex items-center justify-between border-b border-slate-800 pb-1.5">
-                <span class="text-xs font-bold text-amber-500 uppercase tracking-wider">Tier 1</span>
+                <span class="text-xs font-bold text-amber-500 uppercase tracking-wider flex items-center gap-1.5">
+                  Tier 1
+                </span>
               </div>
               <div class="space-y-2">
                 <div id="card-gem-retreat1" class="bg-slate-950/60 p-2.5 rounded border border-slate-800 text-xs flex items-start space-x-2.5 transition duration-150 cursor-pointer hover:border-slate-600 select-none">
-                  <div class="flex items-center h-4 mt-0.5 shrink-0"><input type="checkbox" id="gem-retreat1" class="gem-checkbox w-4 h-4 rounded border-slate-700 text-amber-500 bg-slate-950 focus:ring-amber-500/25 cursor-pointer"></div>
-                  <div class="flex-1"><span class="font-bold text-emerald-400">Retreat I (Twisters)</span><ul class="list-disc list-inside text-slate-400 mt-1 space-y-0.5 pl-1"><li><strong class="text-slate-300">The Grelwood, Areagne</strong></li></ul></div>
+                  <div class="flex items-center h-4 mt-0.5 shrink-0">
+                    <input type="checkbox" id="gem-retreat1" class="gem-checkbox w-4 h-4 rounded border-slate-700 text-amber-500 bg-slate-950 focus:ring-amber-500/25 cursor-pointer">
+                  </div>
+                  <div class="flex-1">
+                    <span class="font-bold text-emerald-400">Retreat I (Twisters)</span>
+                    <ul class="list-disc list-inside text-slate-400 mt-1 space-y-0.5 pl-1">
+                      <li><strong class="text-slate-300">The Grelwood, Areagne</strong></li>
+                    </ul>
+                  </div>
                 </div>
-                <div id="card-gem-rage1" class="bg-slate-950/60 p-2.5 rounded border border-slate-800 text-xs flex items-start space-x-2.5 transition duration-150 cursor-pointer hover:border-slate-600 select-none">
-                  <div class="flex items-center h-4 mt-0.5 shrink-0"><input type="checkbox" id="gem-rage1" class="gem-checkbox w-4 h-4 rounded border-slate-700 text-amber-500 bg-slate-950 focus:ring-amber-500/25 cursor-pointer"></div>
-                  <div class="flex-1"><span class="font-bold text-red-400">Rage I (Whirling Slash)</span><ul class="list-disc list-inside text-slate-400 mt-1 space-y-0.5 pl-1"><li><strong class="text-slate-300">Tomb of the Consort, Haunted Treasure</strong></li></ul></div>
+
+                <div id="card-gem-rage1" class="bg-slate-950/60 p-2.5 rounded border border-slate-800 text-xs flex items-start space-x-2.5 transition duration-150 cursor-pointer hover:border-slate-600 select-none">                
+                  <div class="flex items-center h-4 mt-0.5 shrink-0">
+                    <input type="checkbox" id="gem-rage1" class="gem-checkbox w-4 h-4 rounded border-slate-700 text-amber-500 bg-slate-950 focus:ring-amber-500/25 cursor-pointer">
+                  </div>
+                  <div class="flex-1">
+                    <span class="font-bold text-red-400">Rage I (Whirling Slash)</span>
+                    <ul class="list-disc list-inside text-slate-400 mt-1 space-y-0.5 pl-1">
+                      <li><strong class="text-slate-300">Tomb of the Consort, Haunted Treasure</strong></li>
+                    </ul>              
+                  </div>
                 </div>
+
                 <div id="card-gem-rapid1" class="bg-slate-950/60 p-2.5 rounded border border-slate-800 text-xs flex items-start space-x-2.5 transition duration-150 cursor-pointer hover:border-slate-600 select-none">
-                  <div class="flex items-center h-4 mt-0.5 shrink-0"><input type="checkbox" id="gem-rapid1" class="gem-checkbox w-4 h-4 rounded border-slate-700 text-amber-500 bg-slate-950 focus:ring-amber-500/25 cursor-pointer"></div>
-                  <div class="flex-1"><span class="font-bold text-emerald-400">Rapid Attacks I (Whirling Slash)</span><ul class="list-disc list-inside text-slate-400 mt-1 space-y-0.5 pl-1"><li><strong class="text-slate-300">Ogham Village, The Executioner</strong></li></ul></div>
+                  <div class="flex items-center h-4 mt-0.5 shrink-0">
+                    <input type="checkbox" id="gem-rapid1" class="gem-checkbox w-4 h-4 rounded border-slate-700 text-amber-500 bg-slate-950 focus:ring-amber-500/25 cursor-pointer">
+                  </div>
+                  <div class="flex-1">
+                    <span class="font-bold text-emerald-400">Rapid Attacks I (Whirling Slash)</span>
+                    <ul class="list-disc list-inside text-slate-400 mt-1 space-y-0.5 pl-1">
+                      <li><strong class="text-slate-300">Ogham Village, The Executioner</strong></li>
+                    </ul>
+                  </div>
                 </div>
-                <div id="card-gem-duration1" class="bg-slate-950/60 p-2.5 rounded border border-slate-800 text-xs flex items-start space-x-2.5 transition duration-150 cursor-pointer hover:border-slate-600 select-none">
-                  <div class="flex items-center h-4 mt-0.5 shrink-0"><input type="checkbox" id="gem-duration1" class="gem-checkbox w-4 h-4 rounded border-slate-700 text-amber-500 bg-slate-950 focus:ring-amber-500/25 cursor-pointer"></div>
-                  <div class="flex-1"><span class="font-bold text-red-400">Prolonged Duration I (War Banner)</span><ul class="list-disc list-inside text-slate-400 mt-1 space-y-0.5 pl-1"><li><strong class="text-slate-300">The Manor Ramparts, Gallows</strong></li></ul></div>
+
+                <div id="card-gem-duration1" class="bg-slate-950/60 p-2.5 rounded border border-slate-800 text-xs flex items-start space-x-2.5 transition duration-150 cursor-pointer hover:border-slate-600 select-none">                
+                  <div class="flex items-center h-4 mt-0.5 shrink-0">
+                    <input type="checkbox" id="gem-duration1" class="gem-checkbox w-4 h-4 rounded border-slate-700 text-amber-500 bg-slate-950 focus:ring-amber-500/25 cursor-pointer">
+                  </div>
+                  <div class="flex-1">
+                    <span class="font-bold text-red-400">Prolonged Duration I (War Banner)</span>
+                    <ul class="list-disc list-inside text-slate-400 mt-1 space-y-0.5 pl-1">
+                      <li><strong class="text-slate-300">The Manor Ramparts, Gallows</strong></li>
+                    </ul>              
+                  </div>
                 </div>
-                <div id="card-gem-casting1" class="bg-slate-950/60 p-2.5 rounded border border-slate-800 text-xs flex items-start space-x-2.5 transition duration-150 cursor-pointer hover:border-slate-600 select-none">
-                  <div class="flex items-center h-4 mt-0.5 shrink-0"><input type="checkbox" id="gem-casting1" class="gem-checkbox w-4 h-4 rounded border-slate-700 text-amber-500 bg-slate-950 focus:ring-amber-500/25 cursor-pointer"></div>
-                  <div class="flex-1"><span class="font-bold text-blue-400">Rapid Casting I (Barrage)</span></div>
+
+                <div id="card-gem-casting1" class="bg-slate-950/60 p-2.5 rounded border border-slate-800 text-xs flex items-start space-x-2.5 transition duration-150 cursor-pointer hover:border-slate-600 select-none">                
+                  <div class="flex items-center h-4 mt-0.5 shrink-0">
+                    <input type="checkbox" id="gem-casting1" class="gem-checkbox w-4 h-4 rounded border-slate-700 text-amber-500 bg-slate-950 focus:ring-amber-500/25 cursor-pointer">
+                  </div>
+                  <div class="flex-1">
+                    <span class="font-bold text-blue-400">Rapid Casting I (Barrage)</span>                             
+                  </div>
+                </div>                
+
+                <div id="card-gem-magarea1hoi" class="bg-slate-950/60 p-2.5 rounded border border-slate-800 text-xs flex items-start space-x-2.5 transition duration-150 cursor-pointer hover:border-slate-600 select-none">                
+                  <div class="flex items-center h-4 mt-0.5 shrink-0">
+                    <input type="checkbox" id="gem-magarea1hoi" class="gem-checkbox w-4 h-4 rounded border-slate-700 text-amber-500 bg-slate-950 focus:ring-amber-500/25 cursor-pointer">
+                  </div>
+                  <div class="flex-1">
+                    <span class="font-bold text-blue-400">Magnified Area I (Herald of Ice)</span>                             
+                  </div>
                 </div>
-                <div id="card-gem-casting1ita" class="bg-slate-950/60 p-2.5 rounded border border-slate-800 text-xs flex items-start space-x-2.5 transition duration-150 cursor-pointer hover:border-slate-600 select-none">
-                  <div class="flex items-center h-4 mt-0.5 shrink-0"><input type="checkbox" id="gem-casting1ita" class="gem-checkbox w-4 h-4 rounded border-slate-700 text-amber-500 bg-slate-950 focus:ring-amber-500/25 cursor-pointer"></div>
-                  <div class="flex-1"><span class="font-bold text-blue-400">Magnified Area I (Ice-Tipped Arrows)</span></div>
+
+                <div id="card-gem-coldattunehoi" class="bg-slate-950/60 p-2.5 rounded border border-slate-800 text-xs flex items-start space-x-2.5 transition duration-150 cursor-pointer hover:border-slate-600 select-none">                
+                  <div class="flex items-center h-4 mt-0.5 shrink-0">
+                    <input type="checkbox" id="gem-coldattunehoi" class="gem-checkbox w-4 h-4 rounded border-slate-700 text-amber-500 bg-slate-950 focus:ring-amber-500/25 cursor-pointer">
+                  </div>
+                  <div class="flex-1">
+                    <span class="font-bold text-blue-400">Cold Attunement (Herald of Ice)</span>                             
+                  </div>
                 </div>
-                <div id="card-gem-magarea1hoi" class="bg-slate-950/60 p-2.5 rounded border border-slate-800 text-xs flex items-start space-x-2.5 transition duration-150 cursor-pointer hover:border-slate-600 select-none">
-                  <div class="flex items-center h-4 mt-0.5 shrink-0"><input type="checkbox" id="gem-magarea1hoi" class="gem-checkbox w-4 h-4 rounded border-slate-700 text-amber-500 bg-slate-950 focus:ring-amber-500/25 cursor-pointer"></div>
-                  <div class="flex-1"><span class="font-bold text-blue-400">Magnified Area I (Herald of Ice)</span></div>
+
+                <div id="card-gem-perpetualcharge" class="bg-slate-950/60 p-2.5 rounded border border-slate-800 text-xs flex items-start space-x-2.5 transition duration-150 cursor-pointer hover:border-slate-600 select-none">                
+                  <div class="flex items-center h-4 mt-0.5 shrink-0">
+                    <input type="checkbox" id="gem-perpetualcharge" class="gem-checkbox w-4 h-4 rounded border-slate-700 text-amber-500 bg-slate-950 focus:ring-amber-500/25 cursor-pointer">
+                  </div>
+                  <div class="flex-1">
+                    <span class="font-bold text-blue-400">Perpetual Charge (Barrage)</span>                             
+                  </div>
                 </div>
-                <div id="card-gem-coldattunehoi" class="bg-slate-950/60 p-2.5 rounded border border-slate-800 text-xs flex items-start space-x-2.5 transition duration-150 cursor-pointer hover:border-slate-600 select-none">
-                  <div class="flex items-center h-4 mt-0.5 shrink-0"><input type="checkbox" id="gem-coldattunehoi" class="gem-checkbox w-4 h-4 rounded border-slate-700 text-amber-500 bg-slate-950 focus:ring-amber-500/25 cursor-pointer"></div>
-                  <div class="flex-1"><span class="font-bold text-blue-400">Cold Attunement (Herald of Ice)</span></div>
+
+                <div id="card-gem-profusion1" class="bg-slate-950/60 p-2.5 rounded border border-slate-800 text-xs flex items-start space-x-2.5 transition duration-150 cursor-pointer hover:border-slate-600 select-none">                
+                  <div class="flex items-center h-4 mt-0.5 shrink-0">
+                    <input type="checkbox" id="gem-profusion1" class="gem-checkbox w-4 h-4 rounded border-slate-700 text-amber-500 bg-slate-950 focus:ring-amber-500/25 cursor-pointer">
+                  </div>
+                  <div class="flex-1">
+                    <span class="font-bold text-emerald-400">Charge Profusion I (Combat Frenzy)</span>                             
+                  </div>
                 </div>
               </div>
             </div>
 
-            <!-- Tier 2 -->
+            <!-- Tier 2 Supports -->
             <div class="bg-slate-900/40 border border-slate-800 rounded-lg p-3 space-y-2">
               <div class="flex items-center justify-between border-b border-slate-800 pb-1.5">
-                <span class="text-xs font-bold text-amber-500 uppercase tracking-wider">Tier 2</span>
+                <span class="text-xs font-bold text-amber-500 uppercase tracking-wider flex items-center gap-1.5">
+                  Tier 2
+                </span>
               </div>
               <div class="space-y-2">
-                <div id="card-gem-nexus2" class="bg-slate-950/60 p-2.5 rounded border border-slate-800 text-xs flex items-start space-x-2.5 transition duration-150 cursor-pointer hover:border-slate-600 select-none">
-                  <div class="flex items-center h-4 mt-0.5 shrink-0"><input type="checkbox" id="gem-nexus2" class="gem-checkbox w-4 h-4 rounded border-slate-700 text-amber-500 bg-slate-950 focus:ring-amber-500/25 cursor-pointer"></div>
-                  <div class="flex-1"><span class="font-bold text-blue-400">Frost Nexus (Twisters)</span></div>
+                <div id="card-gem-nexus2" class="bg-slate-950/60 p-2.5 rounded border border-slate-800 text-xs flex items-start space-x-2.5 transition duration-150 cursor-pointer hover:border-slate-600 select-none">                
+                  <div class="flex items-center h-4 mt-0.5 shrink-0">
+                    <input type="checkbox" id="gem-nexus2" class="gem-checkbox w-4 h-4 rounded border-slate-700 text-amber-500 bg-slate-950 focus:ring-amber-500/25 cursor-pointer">
+                  </div>
+                  <div class="flex-1">
+                    <span class="font-bold text-blue-400">Frost Nexus (Twisters)</span>                             
+                  </div>
                 </div>
-                <div id="card-gem-arma2-twister" class="bg-slate-950/60 p-2.5 rounded border border-slate-800 text-xs flex items-start space-x-2.5 transition duration-150 cursor-pointer hover:border-slate-600 select-none">
-                  <div class="flex items-center h-4 mt-0.5 shrink-0"><input type="checkbox" id="gem-arma2-twister" class="gem-checkbox w-4 h-4 rounded border-slate-700 text-amber-500 bg-slate-950 focus:ring-amber-500/25 cursor-pointer"></div>
-                  <div class="flex-1"><span class="font-bold text-red-400">Elemental Arma II (Twisters)</span><ul class="list-disc list-inside text-slate-400 mt-1 space-y-0.5 pl-1"><li><strong class="text-slate-300">Mastodon Badlands Completion</strong></li></ul></div>
+
+                <div id="card-gem-arma2-twister" class="bg-slate-950/60 p-2.5 rounded border border-slate-800 text-xs flex items-start space-x-2.5 transition duration-150 cursor-pointer hover:border-slate-600 select-none">                
+                  <div class="flex items-center h-4 mt-0.5 shrink-0">
+                    <input type="checkbox" id="gem-arma2-twister" class="gem-checkbox w-4 h-4 rounded border-slate-700 text-amber-500 bg-slate-950 focus:ring-amber-500/25 cursor-pointer">
+                  </div>
+                  <div class="flex-1">
+                    <span class="font-bold text-red-400">Elemental Arma II (Twisters)</span> 
+                    <ul class="list-disc list-inside text-slate-400 mt-1 space-y-0.5 pl-1">
+                      <li><strong class="text-slate-300">Mastodon Badlands Completion</strong></li>
+                    </ul>                            
+                  </div>
                 </div>
-                <div id="card-gem-arma2-ita" class="bg-slate-950/60 p-2.5 rounded border border-slate-800 text-xs flex items-start space-x-2.5 transition duration-150 cursor-pointer hover:border-slate-600 select-none">
-                  <div class="flex items-center h-4 mt-0.5 shrink-0"><input type="checkbox" id="gem-arma2-ita" class="gem-checkbox w-4 h-4 rounded border-slate-700 text-amber-500 bg-slate-950 focus:ring-amber-500/25 cursor-pointer"></div>
-                  <div class="flex-1"><span class="font-bold text-red-400">Elemental Arma II (Ice-Tipped Arrows)</span></div>
+
+                <div id="card-gem-arma2-ita" class="bg-slate-950/60 p-2.5 rounded border border-slate-800 text-xs flex items-start space-x-2.5 transition duration-150 cursor-pointer hover:border-slate-600 select-none">                
+                  <div class="flex items-center h-4 mt-0.5 shrink-0">
+                    <input type="checkbox" id="gem-arma2-ita" class="gem-checkbox w-4 h-4 rounded border-slate-700 text-amber-500 bg-slate-950 focus:ring-amber-500/25 cursor-pointer">
+                  </div>
+                  <div class="flex-1">
+                    <span class="font-bold text-red-400">Elemental Arma II (Ice-Tipped Arrows)</span>                           
+                 </div>                  
                 </div>
-                <div id="card-gem-arma2-hoi" class="bg-slate-950/60 p-2.5 rounded border border-slate-800 text-xs flex items-start space-x-2.5 transition duration-150 cursor-pointer hover:border-slate-600 select-none">
-                  <div class="flex items-center h-4 mt-0.5 shrink-0"><input type="checkbox" id="gem-arma2-hoi" class="gem-checkbox w-4 h-4 rounded border-slate-700 text-amber-500 bg-slate-950 focus:ring-amber-500/25 cursor-pointer"></div>
-                  <div class="flex-1"><span class="font-bold text-red-400">Elemental Arma II (Herald of Ice)</span><ul class="list-disc list-inside text-slate-400 mt-1 space-y-0.5 pl-1"><li><strong class="text-slate-300">The Buried Shrines Completion</strong></li></ul></div>
+
+                <div id="card-gem-arma2-hoi" class="bg-slate-950/60 p-2.5 rounded border border-slate-800 text-xs flex items-start space-x-2.5 transition duration-150 cursor-pointer hover:border-slate-600 select-none">                
+                  <div class="flex items-center h-4 mt-0.5 shrink-0">
+                    <input type="checkbox" id="gem-arma2-hoi" class="gem-checkbox w-4 h-4 rounded border-slate-700 text-amber-500 bg-slate-950 focus:ring-amber-500/25 cursor-pointer">
+                  </div>
+                  <div class="flex-1">
+                    <span class="font-bold text-red-400">Elemental Arma II (Herald of Ice)</span> 
+                    <ul class="list-disc list-inside text-slate-400 mt-1 space-y-0.5 pl-1">
+                      <li><strong class="text-slate-300">The Buried Shrines Completion</strong></li>
+                    </ul>                            
+                  </div>
+                </div>
+
+                <div id="card-gem-chargesbarrage" class="bg-slate-950/60 p-2.5 rounded border border-slate-800 text-xs flex items-start space-x-2.5 transition duration-150 cursor-pointer hover:border-slate-600 select-none">                
+                  <div class="flex items-center h-4 mt-0.5 shrink-0">
+                    <input type="checkbox" id="gem-chargesbarrage" class="gem-checkbox w-4 h-4 rounded border-slate-700 text-amber-500 bg-slate-950 focus:ring-amber-500/25 cursor-pointer">
+                  </div>
+                  <div class="flex-1">
+                    <span class="font-bold text-red-400">Heightened Charges (Barrage)</span>                                                 
+                  </div>
                 </div>
               </div>
             </div>
 
-            <!-- Tier 3 -->
+            <!-- Tier 3 Supports -->
             <div class="bg-slate-900/40 border border-slate-800 rounded-lg p-3 space-y-2">
               <div class="flex items-center justify-between border-b border-slate-800 pb-1.5">
-                <span class="text-xs font-bold text-amber-500 uppercase tracking-wider">Tier 3</span>
+                <span class="text-xs font-bold text-amber-500 uppercase tracking-wider flex items-center gap-1.5">
+                  Tier 3 
+                </span>
               </div>
               <div class="space-y-2">
-                <div id="card-gem-retreat2" class="bg-slate-950/60 p-2.5 rounded border border-slate-800 text-xs flex items-start space-x-2.5 transition duration-150 cursor-pointer hover:border-slate-600 select-none">
-                  <div class="flex items-center h-4 mt-0.5 shrink-0"><input type="checkbox" id="gem-retreat2" class="gem-checkbox w-4 h-4 rounded border-slate-700 text-amber-500 bg-slate-950 focus:ring-amber-500/25 cursor-pointer"></div>
-                  <div class="flex-1"><span class="font-bold text-emerald-400">Retreat II (Twisters)</span><ul class="list-disc list-inside text-slate-400 mt-1 space-y-0.5 pl-1"><li><strong class="text-slate-300">Sandswept Marsh, League Mechanic</strong></li></ul></div>
+                <div id="card-gem-retreat2" class="bg-slate-950/60 p-2.5 rounded border border-slate-800 text-xs flex items-start space-x-2.5 transition duration-150 cursor-pointer hover:border-slate-600 select-none">                
+                  <div class="flex items-center h-4 mt-0.5 shrink-0">
+                    <input type="checkbox" id="gem-retreat2" class="gem-checkbox w-4 h-4 rounded border-slate-700 text-amber-500 bg-slate-950 focus:ring-amber-500/25 cursor-pointer">
+                  </div>
+                  <div class="flex-1">
+                    <span class="font-bold text-emerald-400">Retreat II (Twisters)</span> 
+                    <ul class="list-disc list-inside text-slate-400 mt-1 space-y-0.5 pl-1">
+                      <li><strong class="text-slate-300">Sandswept Marsh, League Mechanic</strong></li>
+                    </ul>                            
+                  </div>
                 </div>
-                <div id="card-gem-focus3" class="bg-slate-950/60 p-2.5 rounded border border-slate-800 text-xs flex items-start space-x-2.5 transition duration-150 cursor-pointer hover:border-slate-600 select-none">
-                  <div class="flex items-center h-4 mt-0.5 shrink-0"><input type="checkbox" id="gem-focus3" class="gem-checkbox w-4 h-4 rounded border-slate-700 text-amber-500 bg-slate-950 focus:ring-amber-500/25 cursor-pointer"></div>
-                  <div class="flex-1"><span class="font-bold text-blue-400">Elemental Focus (Ice-Tipped Arrows)</span><ul class="list-disc list-inside text-slate-400 mt-1 space-y-0.5 pl-1"><li><strong class="text-slate-300">Venom Crypts, Rare Sarcophagus</strong></li></ul></div>
+
+                <div id="card-gem-focus3" class="bg-slate-950/60 p-2.5 rounded border border-slate-800 text-xs flex items-start space-x-2.5 transition duration-150 cursor-pointer hover:border-slate-600 select-none">                
+                  <div class="flex items-center h-4 mt-0.5 shrink-0">
+                    <input type="checkbox" id="gem-focus3" class="gem-checkbox w-4 h-4 rounded border-slate-700 text-amber-500 bg-slate-950 focus:ring-amber-500/25 cursor-pointer">
+                  </div>
+                  <div class="flex-1">
+                    <span class="font-bold text-blue-400">Elemental Focus (Ice-Tipped Arrows)</span> 
+                    <ul class="list-disc list-inside text-slate-400 mt-1 space-y-0.5 pl-1">
+                      <li><strong class="text-slate-300">Venom Crypts, Rare Sarcophagus</strong></li>
+                    </ul>                            
+                  </div>                  
                 </div>
-                <div id="card-gem-knockback" class="bg-slate-950/60 p-2.5 rounded border border-slate-800 text-xs flex items-start space-x-2.5 transition duration-150 cursor-pointer hover:border-slate-600 select-none">
-                  <div class="flex items-center h-4 mt-0.5 shrink-0"><input type="checkbox" id="gem-knockback" class="gem-checkbox w-4 h-4 rounded border-slate-700 text-amber-500 bg-slate-950 focus:ring-amber-500/25 cursor-pointer"></div>
-                  <div class="flex-1"><span class="font-bold text-red-400">Knockback (Whirling Slash)</span></div>
+
+                <div id="card-gem-knockback" class="bg-slate-950/60 p-2.5 rounded border border-slate-800 text-xs flex items-start space-x-2.5 transition duration-150 cursor-pointer hover:border-slate-600 select-none">                
+                  <div class="flex items-center h-4 mt-0.5 shrink-0">
+                    <input type="checkbox" id="gem-knockback" class="gem-checkbox w-4 h-4 rounded border-slate-700 text-amber-500 bg-slate-950 focus:ring-amber-500/25 cursor-pointer">
+                  </div>
+                  <div class="flex-1">
+                    <span class="font-bold text-red-400">Knockback (Whirling Slash)</span>                           
+                  </div>
                 </div>
-                <div id="card-gem-cooldownbarrage" class="bg-slate-950/60 p-2.5 rounded border border-slate-800 text-xs flex items-start space-x-2.5 transition duration-150 cursor-pointer hover:border-slate-600 select-none">
-                  <div class="flex items-center h-4 mt-0.5 shrink-0"><input type="checkbox" id="gem-cooldownbarrage" class="gem-checkbox w-4 h-4 rounded border-slate-700 text-amber-500 bg-slate-950 focus:ring-amber-500/25 cursor-pointer"></div>
-                  <div class="flex-1"><span class="font-bold text-emerald-400">Cooldown Recovery I (Barrage)</span></div>
+
+                <div id="card-gem-cooldownbarrage" class="bg-slate-950/60 p-2.5 rounded border border-slate-800 text-xs flex items-start space-x-2.5 transition duration-150 cursor-pointer hover:border-slate-600 select-none">                
+                  <div class="flex items-center h-4 mt-0.5 shrink-0">
+                    <input type="checkbox" id="gem-cooldownbarrage" class="gem-checkbox w-4 h-4 rounded border-slate-700 text-amber-500 bg-slate-950 focus:ring-amber-500/25 cursor-pointer">
+                  </div>
+                  <div class="flex-1">
+                    <span class="font-bold text-emerald-400">Cooldown Recovery I (Barrage)</span>                           
+                  </div>
                 </div>
-                <div id="card-gem-duration2banner" class="bg-slate-950/60 p-2.5 rounded border border-slate-800 text-xs flex items-start space-x-2.5 transition duration-150 cursor-pointer hover:border-slate-600 select-none">
-                  <div class="flex items-center h-4 mt-0.5 shrink-0"><input type="checkbox" id="gem-duration2banner" class="gem-checkbox w-4 h-4 rounded border-slate-700 text-amber-500 bg-slate-950 focus:ring-amber-500/25 cursor-pointer"></div>
-                  <div class="flex-1"><span class="font-bold text-blue-400">Prolonged Duration II (War Banner)</span></div>
+
+                <div id="card-gem-duration2banner" class="bg-slate-950/60 p-2.5 rounded border border-slate-800 text-xs flex items-start space-x-2.5 transition duration-150 cursor-pointer hover:border-slate-600 select-none">                
+                  <div class="flex items-center h-4 mt-0.5 shrink-0">
+                    <input type="checkbox" id="gem-duration2banner" class="gem-checkbox w-4 h-4 rounded border-slate-700 text-amber-500 bg-slate-950 focus:ring-amber-500/25 cursor-pointer">
+                  </div>
+                  <div class="flex-1">
+                    <span class="font-bold text-blue-400">Prolonged Duration II (War Banner)</span>                           
+                  </div>
                 </div>
               </div>
             </div>
 
-            <!-- Tier 4 -->
+            <!-- Tier 4 Supports -->
             <div class="bg-slate-900/40 border border-slate-800 rounded-lg p-3 space-y-2">
               <div class="flex items-center justify-between border-b border-slate-800 pb-1.5">
-                <span class="text-xs font-bold text-amber-500 uppercase tracking-wider">Tier 4</span>
+                <span class="text-xs font-bold text-amber-500 uppercase tracking-wider flex items-center gap-1.5">
+                  Tier 4
+                </span>
               </div>
               <div class="space-y-2">
-                <div id="card-gem-rapid2" class="bg-slate-950/60 p-2.5 rounded border border-slate-800 text-xs flex items-start space-x-2.5 transition duration-150 cursor-pointer hover:border-slate-600 select-none">
-                  <div class="flex items-center h-4 mt-0.5 shrink-0"><input type="checkbox" id="gem-rapid2" class="gem-checkbox w-4 h-4 rounded border-slate-700 text-amber-500 bg-slate-950 focus:ring-amber-500/25 cursor-pointer"></div>
-                  <div class="flex-1"><span class="font-bold text-emerald-400">Rapid Attacks II (Whirling Slash)</span><ul class="list-disc list-inside text-slate-400 mt-1 space-y-0.5 pl-1"><li><strong class="text-slate-300">Isle of Kin, The Beast Pen</strong></li></ul></div>
+                <div id="card-gem-rapid2" class="bg-slate-950/60 p-2.5 rounded border border-slate-800 text-xs flex items-start space-x-2.5 transition duration-150 cursor-pointer hover:border-slate-600 select-none">                
+                  <div class="flex items-center h-4 mt-0.5 shrink-0">
+                    <input type="checkbox" id="gem-rapid2" class="gem-checkbox w-4 h-4 rounded border-slate-700 text-amber-500 bg-slate-950 focus:ring-amber-500/25 cursor-pointer">
+                  </div>
+                  <div class="flex-1">
+                    <span class="font-bold text-emerald-400">Rapid Attacks II (Whirling Slash)</span> 
+                    <ul class="list-disc list-inside text-slate-400 mt-1 space-y-0.5 pl-1">
+                      <li><strong class="text-slate-300">Isle of Kin, The Beast Pen</strong></li>
+                    </ul>                            
+                  </div>
                 </div>
-                <div id="card-gem-rage2" class="bg-slate-950/60 p-2.5 rounded border border-slate-800 text-xs flex items-start space-x-2.5 transition duration-150 cursor-pointer hover:border-slate-600 select-none">
-                  <div class="flex items-center h-4 mt-0.5 shrink-0"><input type="checkbox" id="gem-rage2" class="gem-checkbox w-4 h-4 rounded border-slate-700 text-amber-500 bg-slate-950 focus:ring-amber-500/25 cursor-pointer"></div>
-                  <div class="flex-1"><span class="font-bold text-red-400">Rage II (Whirling Slash)</span></div>
+
+                <div id="card-gem-rage2" class="bg-slate-950/60 p-2.5 rounded border border-slate-800 text-xs flex items-start space-x-2.5 transition duration-150 cursor-pointer hover:border-slate-600 select-none">                
+                  <div class="flex items-center h-4 mt-0.5 shrink-0">
+                    <input type="checkbox" id="gem-rage2" class="gem-checkbox w-4 h-4 rounded border-slate-700 text-amber-500 bg-slate-950 focus:ring-amber-500/25 cursor-pointer">
+                  </div>
+                  <div class="flex-1">
+                    <span class="font-bold text-red-400">Rage II (Whirling Slash)</span>                                           
+                  </div>
                 </div>
-                <div id="card-gem-cooldown2" class="bg-slate-950/60 p-2.5 rounded border border-slate-800 text-xs flex items-start space-x-2.5 transition duration-150 cursor-pointer hover:border-slate-600 select-none">
-                  <div class="flex items-center h-4 mt-0.5 shrink-0"><input type="checkbox" id="gem-cooldown2" class="gem-checkbox w-4 h-4 rounded border-slate-700 text-amber-500 bg-slate-950 focus:ring-amber-500/25 cursor-pointer"></div>
-                  <div class="flex-1"><span class="font-bold text-blue-400">Cooldown Recovery II (Ice-Tipped Arrows)</span></div>
+
+                <div id="card-gem-cooldown2" class="bg-slate-950/60 p-2.5 rounded border border-slate-800 text-xs flex items-start space-x-2.5 transition duration-150 cursor-pointer hover:border-slate-600 select-none">                
+                  <div class="flex items-center h-4 mt-0.5 shrink-0">
+                    <input type="checkbox" id="gem-cooldown2" class="gem-checkbox w-4 h-4 rounded border-slate-700 text-amber-500 bg-slate-950 focus:ring-amber-500/25 cursor-pointer">
+                  </div>
+                  <div class="flex-1">
+                    <span class="font-bold text-blue-400">Cooldown Recovery II (Ice-Tipped Arrows)</span> 
+                  </div>
                 </div>
-                <div id="card-gem-icebite2" class="bg-slate-950/60 p-2.5 rounded border border-slate-800 text-xs flex items-start space-x-2.5 transition duration-150 cursor-pointer hover:border-slate-600 select-none">
-                  <div class="flex items-center h-4 mt-0.5 shrink-0"><input type="checkbox" id="gem-icebite2" class="gem-checkbox w-4 h-4 rounded border-slate-700 text-amber-500 bg-slate-950 focus:ring-amber-500/25 cursor-pointer"></div>
-                  <div class="flex-1"><span class="font-bold text-blue-400">Ice Bite II (Twister)</span><ul class="list-disc list-inside text-slate-400 mt-1 space-y-0.5 pl-1"><li><strong class="text-slate-300">Temporary, until T5 support</strong></li></ul></div>
+
+                <div id="card-gem-icebite2" class="bg-slate-950/60 p-2.5 rounded border border-slate-800 text-xs flex items-start space-x-2.5 transition duration-150 cursor-pointer hover:border-slate-600 select-none">                
+                  <div class="flex items-center h-4 mt-0.5 shrink-0">
+                    <input type="checkbox" id="gem-icebite2" class="gem-checkbox w-4 h-4 rounded border-slate-700 text-amber-500 bg-slate-950 focus:ring-amber-500/25 cursor-pointer">
+                  </div>
+                  <div class="flex-1">
+                    <span class="font-bold text-blue-400">Ice Bite II (Twister)</span> 
+                    <ul class="list-disc list-inside text-slate-400 mt-1 space-y-0.5 pl-1">
+                      <li><strong class="text-slate-300">Temporary, until T5 support</strong></li>
+                    </ul>                            
+                  </div>
                 </div>
-                <div id="card-gem-rapid2barrage" class="bg-slate-950/60 p-2.5 rounded border border-slate-800 text-xs flex items-start space-x-2.5 transition duration-150 cursor-pointer hover:border-slate-600 select-none">
-                  <div class="flex items-center h-4 mt-0.5 shrink-0"><input type="checkbox" id="gem-rapid2barrage" class="gem-checkbox w-4 h-4 rounded border-slate-700 text-amber-500 bg-slate-950 focus:ring-amber-500/25 cursor-pointer"></div>
-                  <div class="flex-1"><span class="font-bold text-blue-400">Rapid Casting II (Barrage)</span></div>
+
+                <div id="card-gem-rapid2barrage" class="bg-slate-950/60 p-2.5 rounded border border-slate-800 text-xs flex items-start space-x-2.5 transition duration-150 cursor-pointer hover:border-slate-600 select-none">                
+                  <div class="flex items-center h-4 mt-0.5 shrink-0">
+                    <input type="checkbox" id="gem-rapid2barrage" class="gem-checkbox w-4 h-4 rounded border-slate-700 text-amber-500 bg-slate-950 focus:ring-amber-500/25 cursor-pointer">
+                  </div>
+                  <div class="flex-1">
+                    <span class="font-bold text-blue-400">Rapid Casting II (Barrage)</span>                           
+                  </div>
                 </div>
               </div>
             </div>
 
-            <!-- Tier 5 -->
+            <!-- Tier 5 Supports -->
             <div class="bg-slate-900/40 border border-slate-800 rounded-lg p-3 space-y-2">
               <div class="flex items-center justify-between border-b border-slate-800 pb-1.5">
-                <span class="text-xs font-bold text-amber-500 uppercase tracking-wider">Tier 5</span>
+                <span class="text-xs font-bold text-amber-500 uppercase tracking-wider flex items-center gap-1.5">
+                  Tier 5
+                </span>
               </div>
               <div class="space-y-2">
-                <div id="card-gem-mark5" class="bg-slate-950/60 p-2.5 rounded border border-slate-800 text-xs flex items-start space-x-2.5 transition duration-150 cursor-pointer hover:border-slate-600 select-none">
-                  <div class="flex items-center h-4 mt-0.5 shrink-0"><input type="checkbox" id="gem-mark5" class="gem-checkbox w-4 h-4 rounded border-slate-700 text-amber-500 bg-slate-950 focus:ring-amber-500/25 cursor-pointer"></div>
-                  <div class="flex-1"><span class="font-bold text-emerald-400">Charged Mark (Freezing Mark)</span></div>
+                <div id="card-gem-mark5" class="bg-slate-950/60 p-2.5 rounded border border-slate-800 text-xs flex items-start space-x-2.5 transition duration-150 cursor-pointer hover:border-slate-600 select-none">                
+                  <div class="flex items-center h-4 mt-0.5 shrink-0">
+                    <input type="checkbox" id="gem-mark5" class="gem-checkbox w-4 h-4 rounded border-slate-700 text-amber-500 bg-slate-950 focus:ring-amber-500/25 cursor-pointer">
+                  </div>
+                  <div class="flex-1">
+                    <span class="font-bold text-emerald-400">Charged Mark (Freezing Mark)</span>                                      
+                  </div>
                 </div>
-                <div id="card-gem-proj5" class="bg-slate-950/60 p-2.5 rounded border border-slate-800 text-xs flex items-start space-x-2.5 transition duration-150 cursor-pointer hover:border-slate-600 select-none">
-                  <div class="flex items-center h-4 mt-0.5 shrink-0"><input type="checkbox" id="gem-proj5" class="gem-checkbox w-4 h-4 rounded border-slate-700 text-amber-500 bg-slate-950 focus:ring-amber-500/25 cursor-pointer"></div>
-                  <div class="flex-1"><span class="font-bold text-emerald-400">Projectile Acceleration III (Twister)</span></div>
+
+                <div id="card-gem-proj5" class="bg-slate-950/60 p-2.5 rounded border border-slate-800 text-xs flex items-start space-x-2.5 transition duration-150 cursor-pointer hover:border-slate-600 select-none">                
+                  <div class="flex items-center h-4 mt-0.5 shrink-0">
+                    <input type="checkbox" id="gem-proj5" class="gem-checkbox w-4 h-4 rounded border-slate-700 text-amber-500 bg-slate-950 focus:ring-amber-500/25 cursor-pointer">
+                  </div>
+                  <div class="flex-1">
+                    <span class="font-bold text-emerald-400">Projectile Acceleration III (Twister)</span>                                      
+                  </div>
                 </div>
-                <div id="card-gem-rage5" class="bg-slate-950/60 p-2.5 rounded border border-slate-800 text-xs flex items-start space-x-2.5 transition duration-150 cursor-pointer hover:border-slate-600 select-none">
-                  <div class="flex items-center h-4 mt-0.5 shrink-0"><input type="checkbox" id="gem-rage5" class="gem-checkbox w-4 h-4 rounded border-slate-700 text-amber-500 bg-slate-950 focus:ring-amber-500/25 cursor-pointer"></div>
-                  <div class="flex-1"><span class="font-bold text-red-400">Rage III (Whirling Slash)</span></div>
+
+                <div id="card-gem-rage5" class="bg-slate-950/60 p-2.5 rounded border border-slate-800 text-xs flex items-start space-x-2.5 transition duration-150 cursor-pointer hover:border-slate-600 select-none">                
+                  <div class="flex items-center h-4 mt-0.5 shrink-0">
+                    <input type="checkbox" id="gem-rage5" class="gem-checkbox w-4 h-4 rounded border-slate-700 text-amber-500 bg-slate-950 focus:ring-amber-500/25 cursor-pointer">
+                  </div>
+                  <div class="flex-1">
+                    <span class="font-bold text-red-400">Rage III (Whirling Slash)</span>                                      
+                  </div>
                 </div>
-                <div id="card-gem-rapid5" class="bg-slate-950/60 p-2.5 rounded border border-slate-800 text-xs flex items-start space-x-2.5 transition duration-150 cursor-pointer hover:border-slate-600 select-none">
-                  <div class="flex items-center h-4 mt-0.5 shrink-0"><input type="checkbox" id="gem-rapid5" class="gem-checkbox w-4 h-4 rounded border-slate-700 text-amber-500 bg-slate-950 focus:ring-amber-500/25 cursor-pointer"></div>
-                  <div class="flex-1"><span class="font-bold text-emerald-400">Rapid Attacks III (Whirling Slash)</span></div>
+
+                <div id="card-gem-rapid5" class="bg-slate-950/60 p-2.5 rounded border border-slate-800 text-xs flex items-start space-x-2.5 transition duration-150 cursor-pointer hover:border-slate-600 select-none">                
+                  <div class="flex items-center h-4 mt-0.5 shrink-0">
+                    <input type="checkbox" id="gem-rapid5" class="gem-checkbox w-4 h-4 rounded border-slate-700 text-amber-500 bg-slate-950 focus:ring-amber-500/25 cursor-pointer">
+                  </div>
+                  <div class="flex-1">
+                    <span class="font-bold text-emerald-400">Rapid Attacks III (Whirling Slash)</span>                                      
+                  </div>
                 </div>
-                <div id="card-gem-rapid3leap" class="bg-slate-950/60 p-2.5 rounded border border-slate-800 text-xs flex items-start space-x-2.5 transition duration-150 cursor-pointer hover:border-slate-600 select-none">
-                  <div class="flex items-center h-4 mt-0.5 shrink-0"><input type="checkbox" id="gem-rapid3leap" class="gem-checkbox w-4 h-4 rounded border-slate-700 text-amber-500 bg-slate-950 focus:ring-amber-500/25 cursor-pointer"></div>
-                  <div class="flex-1"><span class="font-bold text-emerald-400">Rapid Attacks III (Thunder Leap)</span></div>
+
+                <div id="card-gem-rapid3leap" class="bg-slate-950/60 p-2.5 rounded border border-slate-800 text-xs flex items-start space-x-2.5 transition duration-150 cursor-pointer hover:border-slate-600 select-none">                
+                  <div class="flex items-center h-4 mt-0.5 shrink-0">
+                    <input type="checkbox" id="gem-rapid3leap" class="gem-checkbox w-4 h-4 rounded border-slate-700 text-amber-500 bg-slate-950 focus:ring-amber-500/25 cursor-pointer">
+                  </div>
+                  <div class="flex-1">
+                    <span class="font-bold text-emerald-400">Rapid Attacks III (Thunder Leap)</span>                                      
+                  </div>
+                </div>
+
+                <div id="card-gem-rapid3leap-2" class="bg-slate-950/60 p-2.5 rounded border border-slate-800 text-xs flex items-start space-x-2.5 transition duration-150 cursor-pointer hover:border-slate-600 select-none">                
+                  <div class="flex items-center h-4 mt-0.5 shrink-0">
+                    <input type="checkbox" id="gem-rapid3leap-2" class="gem-checkbox w-4 h-4 rounded border-slate-700 text-amber-500 bg-slate-950 focus:ring-amber-500/25 cursor-pointer">
+                  </div>
+                  <div class="flex-1">
+                    <span class="font-bold text-emerald-400">Rapid Attacks III (Thunder Leap) #2</span>                                      
+                  </div>
                 </div>
               </div>
             </div>
 
-          </div>
-        </div>
+          </div>       
+
       </div>
     </section>
 
@@ -383,7 +581,7 @@
       <span>Live Side-Monitor Layout Active</span>
     </div>
     <div class="font-mono text-slate-500">
-      Huntress Spear Build Tracker v1.3
+      Huntress Spear Build Tracker v1.2
     </div>
   </footer>
 
@@ -397,9 +595,9 @@
     const SKILL_COLOR = '#1ba29b';
     const LOOT_COLOR = '#ffff77';
 
-    const BOSSES = ['Kabala','Big Monkey','Blackjaw','Doryiani','Beast Boss','Miller','Beira','Crowbell','Candlemass', 'boss', 'golems', 'Hooded One'];
-    const QUEST_ITEMS = ["ascendancy token","Haunted Treasure","Una's Lute","Blacksmith tools","Quest letter", "Chapel key"];
-    const SKILLS = ['Spear Stab','Whirling Slash','Frost Bomb','Twister','Ice Tipped Arrows','Ice-Tipped Arrows','Barrage'];
+    const BOSSES = ['Areagne', 'Miller', 'Kabala','Big Monkey','Blackjaw','Doryiani','Beast Boss','Miller','Beira','Crowbell','Candlemass', 'boss', 'golems', 'Hooded One'];
+    const QUEST_ITEMS = ["relic", "ascendancy token","Haunted Treasure","Una's Lute","Blacksmith tools","Quest letter", "Chapel key"];
+    const SKILLS = ['Combat Frenzy', 'Charge Profusion', 'Spear Stab','Whirling Slash','Frost Bomb','Twister','Ice Tipped Arrows','Ice-Tipped Arrows','Barrage'];
     const LOOT_ITEMS = ['winged spear','Ironhead Spear','omen scepter','resist ring','Regal orb', 'Jewelers', 'amulet', 'ring', 'pearl', 'Exalts', 'Regals'];
 
     const SUPPORT_COLORS = {
@@ -450,88 +648,97 @@
       return result;
     }
 
+    // Dynamic IDs automatically assigned via script loop below
     const defaultSteps = [
-      { id: 1, act: "Act 1", title: "Riverbank", desc: "Use Spear Stab on Miller. Cast Whirling Slash to clear outer zombie packs. Stay at 100% HP to avoid slam one-shots." },
-      { id: 2, act: "Act 1", title: "Early Gear Trade", desc: "Sell beach gear. Paste Regex and search vendor for flat damage weapon." },
-      { id: 3, act: "Act 1", title: "Skills Acquired", desc: "Obtain <b>Twister</b> & <b>Frost Bomb</b>. Loop: Whirling Slash x3 -> Frost Bomb -> Twister." },
-      { id: 4, act: "Act 1", title: "Clearfell", desc: "Skip Mud burrow, kill Beira, find chest by checkpoint for skill gem. Socket Frost Bomb" },
-      { id: 5, act: "Act 1", title: "The Grelwood / Areagne Kill", desc: "Bring inside hut to shotgun, Link <b>Retreat I on Twister</b>." },
-      { id: 6, act: "Act 1", title: "Red Veil", desc: "Open Refined arms for wep upgrade, Find Ironhead spear. Hit level 5 before town for Vendors. Life Flask upgrade." },
-      { id: 7, act: "Act 1", title: "Vendor > Spikes", desc: "Check for upgrades, place spikes > Grim Tangle." },
-      { id: 8, act: "Act 1", title: "Grim Tangle", desc: "Druid boss for <b>Rage I on Whirling Slash</b>." },
-      { id: 9, act: "Act 1", title: "Cemetery", desc: "League mechanic (Regal orb, for lvl 16 wep), Ring quest." },
-      { id: 10, act: "Act 1", title: "Tomb of Consort", desc: "Haunted Treasure for support gem. <b>Rapid Attacks I on Whirling Slash</b>" },
-      { id: 11, act: "Act 1", title: "Mausoleum", desc: "From 1 corner to opposite corner (unless different in new league)." },
-      { id: 12, act: "Act 1", title: "Lachlann", desc: "Open door, respawn at checkpoint, touch wp for flask refill, DONT pickup quest ring." },
-      { id: 13, act: "Act 1", title: "Hunting Grounds", desc: "Crowbell boss (+2 Skills), Freythorn First." },
-      { id: 14, act: "Act 1", title: "Freythorn", desc: "Reset at checkpoint before 2nd/3rd ritual for less mob spawns." },
-      { id: 15, act: "Act 1", title: "Farmlands", desc: "Una's lute, Mechanic for lvl 4 gem." },
-      { id: 16, act: "Act 1", title: "Ogham Village", desc: "Blacksmith tools, Mechanic (Articifer Orb)." },
-      { id: 17, act: "Act 1", title: "Town", desc: "Flask, Socket <b>Barrage</b> at 14." },
-      { id: 18, act: "Act 1", title: "Manor Ramparts / Manor", desc: "Candlemass, 14 before boss (for barrage), skip boss loot." },
-      { id: 19, act: "Act 2", title: "Outskirts > Town", desc: "Halani Gates > TP out. Check for winged spear (atk speed preference for wep set 2)." },
-      { id: 20, act: "Act 2", title: "Quarry", desc: "<b>Ice Tipped arrows</b>, toss out parry/fang. Hit 16 here before mine." },
-      { id: 21, act: "Act 2", title: "Traitor's Passage", desc: "Balbala for ascendancy token." },
-      { id: 22, act: "Act 2", title: "Halani Gates", desc: "Reset at checkpoint to get NPC to come to you." },
-      { id: 23, act: "Act 2", title: "Town", desc: "Omen scepter for wep set 1. Drop Frost Bomb at level 20 (stops working)." },
-      { id: 24, act: "Act 2", title: "Trial Room Prio", desc: "Ritual > Escape > Chalice > Hourglass > Escape." },
-      { id: 25, act: "Act 2", title: "Trial Boss", desc: "Ascend > relog to char screen > tp town." },
-      { id: 26, act: "Act 2", title: "Mastadon Badlands / Bone Pits", desc: "Relic drops from Hyenas. League mechanic drops exalt. Stand on caster to kill bosses faster." },
-      { id: 27, act: "Act 2", title: "Keth / Lost City", desc: "Mechanic (GCP), Kabala Boss (+2 skill point), Snakes drop clan relic." },
-      { id: 28, act: "Act 2", title: "Buried Shrines", desc: "League mechanic (Jewelers on Twister). Resist ring near last checkpoint (Offering room)" },
-      { id: 29, act: "Act 2", title: "Valley of Titans / Grotto", desc: "Choose Charm Charge gain from quest turnin." },
-      { id: 30, act: "Act 2", title: "Deshar", desc: "Quest Letter (south side of buildings)." },
-      { id: 31, act: "Act 2", title: "Spires of Deshar", desc: "Going north, then down side (Look for Lit res quest). Mechanic (GCP)" },
-      { id: 32, act: "Act 2", title: "Dreadnought", desc: "Reset at checkpoint if not 28 by boss." },
-      { id: 33, act: "Act 2", title: "Town Hooded One", desc: "After 3 dialogue logout/in to skip to town faster." },
-      { id: 34, act: "Act 3", title: "Sandswept Marsh", desc: "Boss on sand area (Skill gem), League Mechanic (T3 Support), Basket guarded by rares on grass area (Jewelers)" },
-      { id: 35, act: "Act 3", title: "Town", desc: "Logout/In after quest dialogue." },
-      { id: 36, act: "Act 3", title: "Jungle Ruins -> Venom Crypts", desc: "Big Monkey (+2 skills), NPC camp chest has rare gloves/belt." },
-      { id: 37, act: "Act 3", title: "Venom Crypts -> Town", desc: "***In 0.5 Follow trail of snakes to end***. Rare Sarcophogus gives T2 Supp. Stun Threshold for reward." },
-      { id: 38, act: "Act 3", title: "Infested Barrens -> Azak Bog", desc: "***In 0.5 This area is in Waterways*** -- Boss is top right of zone (generally)." },
-      { id: 39, act: "Act 3", title: "Infested Barrens -> Chimeral Wetlands", desc: "Skip chaos trial, don't pickup quest item from chimera." },
-      { id: 40, act: "Act 3", title: "Machinarium", desc: "Blackjaw > Use thunder leap on wep set 2 to bypass blockages." },
-      { id: 41, act: "Act 3", title: "Jiquani's Sanctum", desc: "Run to one side checkpoint, tp to start and go opposite way. Respawn at checkpoint after placing cores." },
-      { id: 42, act: "Act 3", title: "Waterways", desc: "Spam portal at final lever (if it still exists)" },
-      { id: 43, act: "Act 3", title: "Drowned City", desc: "Molten Vault, usually bottom left? Top right for exit" },
-      { id: 44, act: "Act 3", title: "Molten Vault", desc: "Thunder leap at corner at start to skip lever" },
-      { id: 45, act: "Act 3", title: "Apex of Filth", desc: "Dont get mushrooms. TP to drowned city after boss, then walk to town from there" },
-      { id: 46, act: "Act 3", title: "Temple of Kopec", desc: "Opposite corner from start (usually). Jump over cracks. TP to town after talking to NPC after boss" },
-      { id: 47, act: "Act 3", title: "Utzaal / Aggorat", desc: "Goliaths drop heart for sacrifice quest. ONE mob will have heart, don't reset at checkpoint to farm." },
-      { id: 48, act: "Act 3", title: "Black Chambers", desc: "TP out after boss skip loot" },
-      { id: 49, act: "Act 4", title: "Town", desc: "Click Doryiani, dodge away. Spam dialogue on Alva for quest item, Head to boat" },
-      { id: 50, act: "Act 4", title: "Island Completion Order", desc: "Isle of Kin > Whakapanu > Abandoned Prison > Shrike Island > Eye of Hinekora > Kedge Bay > Ngakanu" },
-      { id: 51, act: "Act 4", title: "Isle of Kin -> Warrens", desc: "Mechanic (GCP), Beast Boss for Skills, Beast in cage for support (Rapid attacks 2 on whirling)" },
-      { id: 52, act: "Act 4", title: "Volcanic Warrens", desc: "Golems drop good ring" },
-      { id: 53, act: "Act 4", title: "Whakapana Island -> Caverns", desc: "Caverns are a circle, boss towards center. Get pearl for turnin if you need amulet. Get max rage and full spins to one shot boss and skip phase." },
-      { id: 54, act: "Act 4", title: "Abandoned Prison -> Solitary Confinement", desc: "Chapel key from necromancers > Take inc life reward" },
-      { id: 55, act: "Act 4", title: "Solitary Confinement", desc: "Mobs get DR from waves here, just hop over mobs and skip to end ASAP" },
-      { id: 56, act: "Act 4", title: "Shrike Island", desc: "Hop cliffs with leap. TALK TO MATIKI BEFORE LEAVING!!! (After Boss)" },
-      { id: 57, act: "Act 4", title: "Eye of Hinekora -> Halls of Dead", desc: "5% mana from 'pay respects'. In Halls, for tattoos go Straight north > Straight Right > South. Take resist rewards." },
-      { id: 58, act: "Act 4", title: "Kedge Bay", desc: "Skip 2nd zone until JUST before maps. (WP to town at 2nd zone WP)" },
-      { id: 59, act: "Act 4", title: "Arastus", desc: "Lvl 46. Hop walls in city / cliffs. Click outside bell for Exalts. Regals are opposite side in city." },
-      { id: 60, act: "Act 4", title: "Excavation", desc: "Amulet from mechanic. Reset checkpoint to skip boss dialogue." },
-      { id: 61, act: "Act 4", title: "After Boss", desc: "Speak To Hooded One > Log out/Log In > Portal to Town > Vendor and clean inventory" },
-      { id: 62, act: "Act 4", title: "Ngakanu", desc: "Do mechanic (Greater Jewelers on twister). Checkpoint means deadend, go other way." },
-      { id: 63, act: "Interlude", title: "Interlude 3 -> Prep", desc: "Check vendors for spear upgrade, or Gamba if wep is shit." },
-      { id: 64, act: "Interlude", title: "Ashen Forest -> Kriar Village", desc: "Kriar is good for XP, try to hit 50" },
-      { id: 65, act: "Interlude", title: "Glacial Tarn", desc: "Find caves, kill boss at bottom of zone. TP town turn in and WP back to Tarn." },
-      { id: 66, act: "Interlude", title: "Kriar peaks", desc: "Unique vendor if you care, not a big deal" },
-      { id: 67, act: "Interlude", title: "Etched Ravine", desc: "Good xp, clear to end." },
-      { id: 68, act: "Interlude", title: "Cuachic Vault", desc: "Head top right for boss. Dont need to pickup cores." },
-      { id: 69, act: "Interlude", title: "Interlude 2 -> Khari Crossing", desc: "Hit 54 here. Bottom right and go around counter clockwise. TP after boss." },
-      { id: 71, act: "Interlude", title: "After Turn in", desc: "Top Right exit -> Straight North. HP buff from forge, respawn at checkpoint -> West to gates WP, then back out to pools" },
-      { id: 72, act: "Interlude", title: "Pools of Khatal -> Sanctuary", desc: "Guaranteed jewels if needed, otherwise straight to boss." },
-      { id: 73, act: "Interlude", title: "Galai Gates -> Qimah", desc: "Take all res reward. Jump past mobs if higher than 56." },
-      { id: 74, act: "Interlude", title: "Interlude 1, Farmlands", desc: "..." },
-      { id: 75, act: "Interlude", title: "Stones of Serle", desc: "After boss, click Una -> WP to entrance -> Leave after return to darkness text comes up"  },
-      { id: 76, act: "Interlude", title: "Blackwood -> Holten -> Wolven", desc: "Jump through mobs in Holten/Wolven" },
-      { id: 77, act: "Interlude", title: "Holten Estate", desc: "Counterclock then center" },
-      { id: 78, act: "Interlude", title: "Journey's End", desc: "Back in Act 4, jump through and finish Journey's Captain Hartlin then TP home." },
-      { id: 79, act: "Interlude", title: "Deliurm", desc: "WP back and complete Delirum. GG you are in maps." },
-      { id: 80, act: "Endgame", title: "Maps Prep", desc: "Complete a map, then you can use your hideout." },
-      { id: 81, act: "Endgame", title: "Final Gear Assessment", desc: "Tear down temporary setups, fix caps, and run hideout maps." }
+      { act: "Act 1", title: "Riverbank", desc: "Use Spear Stab on Miller. Cast Whirling Slash to clear outer zombie packs. Stay at 100% HP to avoid slam one-shots.", mechanic: "" },
+      { act: "Act 1", title: "Early Gear Trade", desc: "Sell beach gear. Paste Regex and search vendor for flat damage weapon.", mechanic: "" },      
+      { act: "Act 1", title: "Clearfell", desc: "Skip Mud burrow, open camp chest for Frost Bomb gem. kill Beira", mechanic: "Orb of Transmutation" },
+      { act: "Act 1", title: "The Grelwood", desc: "Bring Areagne inside hut to shotgun, Link <b>Retreat I on Twister</b>.", mechanic: "Orb of Transmutation" },
+      { act: "Act 1", title: "Red Veil", desc: "Open Refined arms for wep upgrade, Find Ironhead spear. Hit level 5 before town for Vendors. Life Flask upgrade.", mechanic: "Uncut Skill Gem (Level 2)" },
+      { act: "Act 1", title: "Vendor > Spikes", desc: "Check for upgrades, place spikes > Grim Tangle.", mechanic: "" },
+      { act: "Act 1", title: "Grim Tangle", desc: "Druid boss for <b>Rage I on Whirling Slash</b>.", mechanic: "Uncut Skill Gem (Level 3)" },
+      { act: "Act 1", title: "Cemetery", desc: "Ring quest.", mechanic: "Regal Orb (save for lvl 16 wep)" },
+      { act: "Act 1", title: "Tomb of Consort", desc: "<b>Rapid Attacks I on Whirling Slash</b>", mechanic: "Amulet" },
+      { act: "Act 1", title: "Mausoleum", desc: "From 1 corner to opposite corner (unless different in new league).", mechanic: "Lesser Rune" },
+      { act: "Act 1", title: "Lachlann", desc: "Open door, respawn at checkpoint, touch wp for flask refill, DONT pickup quest ring.", mechanic: "" },
+      { act: "Act 1", title: "Hunting Grounds", desc: "Tracks lead to Crowbell (+2 Skills), Road Sign points to Farmlands, Ritual points to Freythorn", mechanic: "Exalted Orb" },
+      { act: "Act 1", title: "Freythorn", desc: "Reset at checkpoint before 2nd/3rd ritual for less mob spawns.", mechanic: "Uncut Support Gem" },
+      { act: "Act 1", title: "Farmlands", desc: "Una's lute.", mechanic: "Uncut Skill Gem (Level 4)" },
+      { act: "Act 1", title: "Ogham Village", desc: "Blacksmith tools", mechanic: "Artificer's Orb" },
+      { act: "Act 1", title: "Town", desc: "Flask, Socket <b>Barrage</b> at 14.", mechanic: "" },
+      { act: "Act 1", title: "Manor Ramparts", desc: "Support gem from gallows", mechanic: "Uncut Skill Gem (Level 5)" },
+      { act: "Act 1", title: "Manor", desc: "Do Candlemass, hit 14 before boss (for barrage), skip boss loot.", mechanic: "Orb of Alchemy" },
+      { act: "Act 2", title: "Outskirts > Town", desc: "Halani Gates > TP out. Check for winged spear (atk speed preference for wep set 2).", mechanic: "Exalted Orb" },
+      { act: "Act 2", title: "Quarry", desc: "Socket <b>Ice Tipped arrows</b>, toss out parry/fang. Hit 16 here before mine.", mechanic: "Uncut Spirit Gem (Level 5)" },
+      { act: "Act 2", title: "Mine", desc: "", mechanic: "Uncut Support Gem (Level 2)" },
+      { act: "Act 2", title: "Traitor's Passage", desc: "Balbala for ascendancy token.", mechanic: "Artificer's Orb" },
+      { act: "Act 2", title: "Halani Gates", desc: "Reset at checkpoint to get NPC to come to you.", mechanic: "Exalted Orb" },
+      { act: "Act 2", title: "Town", desc: "Omen scepter for wep set 1. Drop Frost Bomb at level 20 (stops working).", mechanic: "" },
+      { act: "Act 2", title: "Trial Room Prio", desc: "Ritual > Escape > Chalice > Hourglass > Gauntlet.", mechanic: "" },
+      { act: "Act 2", title: "Trial Boss", desc: "Ascend > relog to char screen > tp town.", mechanic: "" },
+      { act: "Act 2", title: "Mastadon Badlands -> Lightless passage", desc: "Rush to end of lightless passage.", mechanic: "Regal Orb" },
+      { act: "Act 2", title: "Bone Pits", desc: "Relic drops from Hyenas. Stand on caster to kill bosses faster.", mechanic: "Regal Orb" },
+      { act: "Act 2", title: "Keth / Lost City", desc: "Kabala Boss (+2 skill point), Snakes drop clan relic.", mechanic: "Gemcutter's Prism (Keth) / Orb of Alchemy (Lost City)" },
+      { act: "Act 2", title: "Buried Shrines", desc: "Resist ring near last checkpoint (Offering room)", mechanic: "Lesser Jeweller's Orb" },
+      { act: "Act 2", title: "Valley of Titans / Grotto", desc: "Choose Charm Charge gain from quest turnin.", mechanic: "Unique Item (Valley) / Chance Shard (Grotto)" },
+      { act: "Act 2", title: "Deshar", desc: "Quest Letter (south side of buildings).", mechanic: "Lesser Rune" },
+      { act: "Act 2", title: "Spires of Deshar", desc: "Going north, then down side (Look for Lit res quest).", mechanic: "Gemcutter's Prism" },
+      { act: "Act 2", title: "Dreadnought", desc: "Reset at checkpoint if not 28 by boss.", mechanic: "" },
+      { act: "Act 2", title: "Town Hooded One", desc: "After 3 dialogue logout/in to skip to town faster.", mechanic: "" },
+      { act: "Act 3", title: "Sandswept Marsh", desc: "Boss on sand area (Skill gem), Basket guarded by rares on grass area (Jewelers)", mechanic: "Uncut Support Gem (Level 3)" },
+      { act: "Act 3", title: "Town", desc: "Logout/In after quest dialogue.", mechanic: "" },
+      { act: "Act 3", title: "Jungle Ruins -> Venom Crypts", desc: "Big Monkey (+2 skills) at center of zone, Follow snakes to venom crypts. NPC camp chest has rare gloves/belt and points to exit.", mechanic: "Orb of Alchemy" },
+      { act: "Act 3", title: "Venom Crypts -> Town", desc: "Look for human enemies to find the venom quickly. Take stun threshhold reward.", mechanic: "Magic Ring" },
+      { act: "Act 3", title: "Infested Barrens", desc: "Aldur vault here unlocks unique forging mechanic", mechanic: "Exalted Orb" },
+      { act: "Act 3", title: "Chimeral Wetlands", desc: "Skip chaos trial, don't pickup quest item from chimera.", mechanic: "Uncut Skill Gem (Level 9)" },
+      { act: "Act 3", title: "Machinarium", desc: "Blackjaw > Use thunder leap on wep set 2 to bypass blockages.", mechanic: "Artificer's Orb" },
+      { act: "Act 3", title: "Jiquani's Sanctum", desc: "Run to one side checkpoint, tp to start and go opposite way. Respawn at checkpoint after placing cores.", mechanic: "Exalted Orb" },
+      { act: "Act 3", title: "Waterways", desc: "Spam portal at final lever (if it still exists)", mechanic: "Uncut Spirit Gem (Level 10)" },
+      { act: "Act 3", title: "Azak Bog", desc: "Boss is usually top right, Socket Combat Frenzy with Charge Profusion", mechanic: "Rune" },
+      { act: "Act 3", title: "Drowned City", desc: "The two exits should be opposite of each other after the nest ambush checkpoint", mechanic: "Uncut Support Gem (Level 3)" },
+      { act: "Act 3", title: "Molten Vault", desc: "Thunder leap at corner at start to skip lever", mechanic: "Unique Item" },
+      { act: "Act 3", title: "Apex of Filth", desc: "Dont get mushrooms. TP to drowned city after boss, then walk to town from there", mechanic: "Vaal Orb" },
+      { act: "Act 3", title: "Temple of Kopec", desc: "Opposite corner from start (usually). Jump over cracks. TP to town after talking to NPC after boss", mechanic: "Uncut Spirit Gem (Level 11)" },
+      { act: "Act 3", title: "Utzaal / Aggorat", desc: "Goliaths drop heart for sacrifice quest. ONE mob will have heart, don't reset at checkpoint to farm.", mechanic: "Random Jewel (Utzaal) / Uncut Skill Gem Level 11 (Aggorat)" },
+      { act: "Act 3", title: "Black Chambers", desc: "TP out after boss skip loot", mechanic: "Vaal Orb" },
+      { act: "Act 4", title: "Town", desc: "Click Doryiani, dodge away. Spam dialogue on Alva for quest item, Head to boat", mechanic: "" },
+      { act: "Act 4", title: "Island Completion Order", desc: "Isle of Kin > Whakapanu > Abandoned Prison > Shrike Island > Eye of Hinekora > Kedge Bay > Ngakanu", mechanic: "" },
+      { act: "Act 4", title: "Isle of Kin -> Warrens", desc: "Beast Boss for Skills, Beast in cage for support (Rapid attacks 2 on whirling)", mechanic: "Gemcutter's Prism" },
+      { act: "Act 4", title: "Volcanic Warrens", desc: "Golem minibosses drop VERY good ring", mechanic: "Uncut Support Gem (Level 4)" },
+      { act: "Act 4", title: "Whakapana Island -> Caverns", desc: "Caverns are a circle, boss towards center. Get clam's pearl for good amulet. Get max rage and full spins to one shot boss and skip phase.", mechanic: "Artificer's Orb" },
+      { act: "Act 4", title: "Abandoned Prison -> Solitary Confinement", desc: "Chapel key from necromancers > Take inc life reward", mechanic: "Exalted Orb" },
+      { act: "Act 4", title: "Solitary Confinement", desc: "Mobs get DR from waves here, just hop over mobs and skip to end ASAP", mechanic: "Rune" },
+      { act: "Act 4", title: "Shrike Island", desc: "Hop cliffs with leap. TALK TO MATIKI BEFORE LEAVING!!! (After Boss)", mechanic: "Uncut Support Gem (Level 4)" },
+      { act: "Act 4", title: "Eye of Hinekora -> Halls of Dead", desc: "5% mana from 'pay respects'. In Halls, for tattoos go Straight north > Straight Right > South. Take resist rewards.", mechanic: "Chaos Orb" },
+      { act: "Act 4", title: "Kedge Bay", desc: "Skip 2nd zone until JUST before maps. (WP to town at 2nd zone WP)", mechanic: "Exalted Orb" },
+      { act: "Act 4", title: "Arastus", desc: "Lvl 46. Hop walls in city / cliffs. Click outside bell for Exalts. Regals are opposite side in city.", mechanic: "Uncut Skill Gem (Level 12)" },
+      { act: "Act 4", title: "Excavation", desc: "Reset checkpoint to skip boss dialogue.", mechanic: "Rare Amulet" },
+      { act: "Act 4", title: "After Boss", desc: "Speak To Hooded One > Log out/Log In > Portal to Town > Vendor and clean inventory", mechanic: "" },
+      { act: "Act 4", title: "Ngakanu", desc: "Checkpoint means deadend, go other way.", mechanic: "Greater Jeweller's Orb" },
+      { act: "Interlude", title: "Interlude 3 -> Prep", desc: "Check vendors for spear upgrade, or Gamba if wep is shit.", mechanic: "" },
+      { act: "Interlude", title: "Ashen Forest -> Kriar Village", desc: "Kriar is good for XP, try to hit 50", mechanic: "Rare Belt (Ashen Forest) / Greater Rune (Kriar Village)" },
+      { act: "Interlude", title: "Glacial Tarn", desc: "Find caves, kill boss at bottom of zone. TP town turn in and WP back to Tarn.", mechanic: "Greater Orb of Augmentation" },
+      { act: "Interlude", title: "Kriar peaks", desc: "Unique vendor if you care, not a big deal", mechanic: "Greater Orb of Transmutation" },
+      { act: "Interlude", title: "Etched Ravine", desc: "Good xp, clear to end.", mechanic: "Exalted Orb" },
+      { act: "Interlude", title: "Cuachic Vault", desc: "Head top right for boss. Dont need to pickup cores.", mechanic: "Vaal Orb" },
+      { act: "Interlude", title: "Interlude 2 -> Khari Crossing", desc: "Hit 54 here. Bottom right and go around counter clockwise. TP after boss.", mechanic: "Gemcutter's Prism" },
+      { act: "Interlude", title: "After Turn in", desc: "Top Right exit -> Straight North. HP buff from forge, respawn at checkpoint -> West to gates WP, then back out to pools", mechanic: "" },
+      { act: "Interlude", title: "Pools of Khatal -> Sanctuary", desc: "Guaranteed jewels if needed, otherwise straight to boss.", mechanic: "Orb of Alchemy" },
+      { act: "Interlude", title: "Galai Gates -> Qimah", desc: "Take all res reward. Jump past mobs if higher than 56.", mechanic: "Greater Orb of Augmentation (Galai Gates) / Exalted Orb (Qimah)" },
+      { act: "Interlude", title: "Interlude 1, Farmlands", desc: "...", mechanic: "Uncut Support Gem (Level 4)" },
+      { act: "Interlude", title: "Stones of Serle", desc: "After boss, click Una -> WP to entrance -> Leave after return to darkness text comes up", mechanic: "Exalted Orb" },
+      { act: "Interlude", title: "Blackwood -> Holten -> Wolven", desc: "Jump through mobs in Holten/Wolven", mechanic: "Greater Orb of Transmutation (Blackwood) / Greater Rune (Holten) / Greater Orb of Augmentation (Wolvenhold)" },
+      { act: "Interlude", title: "Holten Estate", desc: "Counterclock then center", mechanic: "Artificer's Orb" },
+      { act: "Interlude", title: "Journey's End", desc: "Back in Act 4, jump through and finish Journey's Captain Hartlin then TP home.", mechanic: "Orb of Alchemy" },
+      { act: "Interlude", title: "Deliurm", desc: "WP back and complete Delirum. GG you are in maps.", mechanic: "" },
+      { act: "Endgame", title: "Maps Prep", desc: "Complete a map, then you can use your hideout.", mechanic: "" },
+      { act: "Endgame", title: "Final Gear Assessment", desc: "Tear down temporary setups, fix caps, and run hideout maps.", mechanic: "" }
     ];
+
+    // Automatically inject sequential IDs dynamically
+    defaultSteps.forEach((step, index) => {
+      step.id = index + 1;
+    });
 
     const checklistContainer = document.getElementById('checklistContainer');
     const toggleCompact = document.getElementById('toggleCompact');
@@ -545,6 +752,7 @@
     let checkedItems = JSON.parse(localStorage.getItem('poe2_checked_steps')) || [];
     let checkedGems = JSON.parse(localStorage.getItem('poe2_checked_gems')) || [];
     
+    // Set all Acts to collapsed (true) initially on very first load if no local preference is saved
     let collapsedActs = JSON.parse(localStorage.getItem('poe2_collapsed_acts')) || {
       "Act 1": true,
       "Act 2": true,
@@ -560,31 +768,25 @@
       renderChecklist();
     };
 
-    // PATCH 2: auto-collapse act when all steps complete, expand when unchecking
+    // Toggle Checkbox Action
     window.toggleStep = function(id) {
-      const step = defaultSteps.find(s => s.id === id);
       if (checkedItems.includes(id)) {
         checkedItems = checkedItems.filter(item => item !== id);
-        if (step) collapsedActs[step.act] = false;
       } else {
         checkedItems.push(id);
-        if (step) {
-          const actSteps = defaultSteps.filter(s => s.act === step.act);
-          const allComplete = actSteps.every(s => checkedItems.includes(s.id));
-          if (allComplete) collapsedActs[step.act] = true;
-        }
       }
       localStorage.setItem('poe2_checked_steps', JSON.stringify(checkedItems));
-      localStorage.setItem('poe2_collapsed_acts', JSON.stringify(collapsedActs));
       renderChecklist();
     };
 
+    // Initialize Skill Gem Checkboxes with storage persistence and full-container-click support
     function initGemCheckboxes() {
       const checkboxes = document.querySelectorAll('.gem-checkbox');
       checkboxes.forEach(cb => {
         const gemId = cb.id;
         const parentCard = document.getElementById('card-' + gemId);
         
+        // Load initial state
         if (checkedGems.includes(gemId)) {
           cb.checked = true;
           if (parentCard) parentCard.classList.add('opacity-40');
@@ -593,10 +795,13 @@
           if (parentCard) parentCard.classList.remove('opacity-40');
         }
 
+        // Handle full card toggle actions
         const toggleGemState = () => {
           cb.checked = !cb.checked;
           if (cb.checked) {
-            if (!checkedGems.includes(gemId)) checkedGems.push(gemId);
+            if (!checkedGems.includes(gemId)) {
+              checkedGems.push(gemId);
+            }
             if (parentCard) parentCard.classList.add('opacity-40');
           } else {
             checkedGems = checkedGems.filter(id => id !== gemId);
@@ -605,8 +810,10 @@
           localStorage.setItem('poe2_checked_gems', JSON.stringify(checkedGems));
         };
 
+        // Click handler on parent card container
         if (parentCard) {
           parentCard.addEventListener('click', (e) => {
+            // Guard to make sure if the user clicks the checkbox itself, we don't double-trigger
             if (e.target !== cb) {
               e.preventDefault();
               toggleGemState();
@@ -614,9 +821,12 @@
           });
         }
 
+        // Direct change listener on checkbox in case clicked directly
         cb.addEventListener('change', () => {
           if (cb.checked) {
-            if (!checkedGems.includes(gemId)) checkedGems.push(gemId);
+            if (!checkedGems.includes(gemId)) {
+              checkedGems.push(gemId);
+            }
             if (parentCard) parentCard.classList.add('opacity-40');
           } else {
             checkedGems = checkedGems.filter(id => id !== gemId);
@@ -627,15 +837,20 @@
       });
     }
 
+    // Render Checklist (With Acts Collapsible Structure)
     function renderChecklist() {
       checklistContainer.innerHTML = '';
       
+      // Group steps by Act
       const acts = {};
       defaultSteps.forEach(step => {
-        if (!acts[step.act]) acts[step.act] = [];
+        if (!acts[step.act]) {
+          acts[step.act] = [];
+        }
         acts[step.act].push(step);
       });
 
+      // Render each Act section
       Object.keys(acts).forEach(act => {
         const steps = acts[act];
         const isCollapsed = !!collapsedActs[act];
@@ -643,6 +858,7 @@
         const completedSteps = steps.filter(s => checkedItems.includes(s.id)).length;
         const isActCompleted = completedSteps === totalSteps;
 
+        // Header classes & status badges
         const headerBorderClass = isActCompleted ? "border-amber-500/50 bg-amber-500/10" : "border-slate-800 bg-slate-900";
         const titleColorClass = isActCompleted ? "text-amber-400 font-bold" : "text-slate-300 font-bold";
         const badgeColorClass = isActCompleted ? "bg-amber-500 text-slate-950 font-semibold" : "bg-slate-850 text-slate-400";
@@ -650,6 +866,7 @@
 
         let actHtml = `
           <div class="space-y-2">
+            <!-- Act Header -->
             <button onclick="toggleAct('${act}')" class="w-full flex items-center justify-between p-2.5 rounded-lg border ${headerBorderClass} hover:border-slate-700 transition select-none text-left focus:outline-none">
               <div class="flex items-center space-x-2">
                 <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 transition-transform duration-200 ${chevronClass}"></i>
@@ -659,47 +876,63 @@
                 ${completedSteps}/${totalSteps} Complete
               </span>
             </button>
+
+            <!-- Act Steps container (hidden if collapsed) -->
             <div class="${isCollapsed ? 'hidden' : 'space-y-2 pl-1'}">
         `;
 
         steps.forEach(step => {
           const isChecked = checkedItems.includes(step.id);
           const colorizedDesc = colorizeText(step.desc);
-
-          // PATCH 1: slim completed steps — title only, minimal padding
-          if (isChecked) {
-            actHtml += `
-              <div class="py-1 px-2 rounded border bg-slate-950/40 border-slate-900/40 opacity-60 flex items-center space-x-2 transition select-none">
-                <div class="flex items-center shrink-0">
-                  <input type="checkbox" id="step-${step.id}" checked
-                    class="w-4 h-4 rounded border-slate-600 text-amber-500 bg-slate-950 focus:ring-amber-500/25 cursor-pointer"
-                    onchange="event.stopPropagation(); toggleStep(${step.id})">
-                </div>
-                <div class="flex-1 cursor-pointer" onclick="toggleStep(${step.id})">
-                  <span class="line-through text-white/40 text-[10px] uppercase tracking-wide">${step.title}</span>
-                </div>
-              </div>
-            `;
-          } else {
-            actHtml += `
-              <div class="p-3 rounded-lg border bg-slate-900 border-slate-700 hover:border-slate-500 hover:shadow-lg transition duration-150 flex items-start space-x-3 select-none">
-                <div class="flex items-center h-5 mt-0.5 shrink-0">
-                  <input type="checkbox" id="step-${step.id}"
-                    class="w-4 h-4 rounded border-slate-600 text-amber-500 bg-slate-950 focus:ring-amber-500/25 focus:ring-offset-slate-950 cursor-pointer"
-                    onchange="event.stopPropagation(); toggleStep(${step.id})">
-                </div>
-                <div class="flex-1 cursor-pointer" onclick="toggleStep(${step.id})">
-                  <div class="flex items-center justify-between mb-0.5">
-                    <span class="font-black text-amber-400 text-xs sm:text-sm uppercase tracking-wider">${step.title}</span>
-                  </div>
-                  <p class="text-slate-50 font-bold text-xs sm:text-[13px] leading-relaxed mt-1">${colorizedDesc}</p>
-                </div>
+          
+          // Optional Mechanic Row Rendering with Expo Exposure design
+          let mechanicHtml = '';
+          if (step.mechanic) {
+            const colorizedMech = colorizeText(step.mechanic);
+            mechanicHtml = `
+              <div class="mt-1.5 flex items-start space-x-1.5 text-xs font-semibold ${isChecked ? 'text-slate-600 line-through' : 'text-emerald-400'}">
+                <span class="inline-block text-emerald-500 select-none">•</span>
+                <span><strong class="text-slate-400 font-bold">Mechanic:</strong> ${colorizedMech}</span>
               </div>
             `;
           }
+
+          // HIGH CONTRAST AND BOLDNESS FOR HIGH READABILITY ON SECOND MONITOR
+          const cardClass = isChecked 
+            ? "bg-slate-950/40 border-slate-900/40 opacity-50"
+            : "bg-slate-900 border-slate-700 hover:border-slate-500 hover:shadow-lg transition duration-150";
+          
+          const titleClass = isChecked 
+            ? "line-through text-slate-600 font-medium text-xs uppercase tracking-wide" 
+            : "font-black text-amber-400 text-xs sm:text-sm uppercase tracking-wider";
+          
+          const textClass = isChecked 
+            ? "text-slate-600 line-through text-xs font-normal" 
+            : "text-slate-50 font-bold text-xs sm:text-[13px] leading-relaxed mt-1";
+
+          actHtml += `
+            <div class="p-3 rounded-lg border ${cardClass} flex items-start space-x-3 transition select-none">
+              <div class="flex items-center h-5 mt-0.5 shrink-0">
+                <input type="checkbox" id="step-${step.id}" ${isChecked ? 'checked' : ''} 
+                  class="w-4.5 h-4.5 rounded border-slate-600 text-amber-500 bg-slate-950 focus:ring-amber-500/25 focus:ring-offset-slate-950 cursor-pointer"
+                  onchange="event.stopPropagation(); toggleStep(${step.id})">
+              </div>
+              <div class="flex-1 cursor-pointer" onclick="toggleStep(${step.id})">
+                <div class="flex items-center justify-between mb-0.5">
+                  <span class="${titleClass}">${step.title}</span>
+                </div>                
+                <p class="${textClass}">${colorizedDesc}</p>
+                ${mechanicHtml}
+              </div>
+            </div>
+          `;
         });
 
-        actHtml += `</div></div>`;
+        actHtml += `
+            </div>
+          </div>
+        `;
+
         checklistContainer.innerHTML += actHtml;
       });
 
@@ -707,14 +940,17 @@
       lucide.createIcons();
     }
 
+    // Update Progress Indicator
     function updateProgress() {
       const total = defaultSteps.length;
       const completed = checkedItems.length;
       progressText.textContent = `${completed} / ${total} Complete`;
     }
 
+    // Tab Navigation Logic (Only Reference and Skills tabs remaining)
     const tabGear = document.getElementById('tabGear');
     const tabSkills = document.getElementById('tabSkills');
+
     const contentGear = document.getElementById('contentGear');
     const contentSkills = document.getElementById('contentSkills');
 
@@ -736,15 +972,18 @@
       });
     });
 
+    // Toggle Side Monitor View Mode (Toggles compact look/hides excess space)
     toggleCompact.addEventListener('click', () => {
       isCompact = !isCompact;
       if (isCompact) {
+        // Slim, side-monitor mode
         referencePanel.classList.add('hidden');
         mainHeader.classList.add('py-1');
         compactBtnText.textContent = 'Dashboard Mode';
         toggleCompact.classList.add('bg-amber-500', 'text-slate-950', 'border-amber-500');
         toggleCompact.classList.remove('bg-slate-800', 'text-slate-100', 'border-slate-700');
       } else {
+        // Standard full dashboard
         referencePanel.classList.remove('hidden');
         mainHeader.classList.remove('py-1');
         compactBtnText.textContent = 'Side Monitor Mode';
@@ -753,11 +992,15 @@
       }
     });
 
+    // Safe Double-click Reset Toggle - Eliminating alert() and confirm() entirely
     let confirmTimeout;
     resetApp.addEventListener('click', () => {
       if (resetApp.dataset.confirming === "true") {
+        // Second click: Perform actual reset
         checkedItems = [];
         checkedGems = [];
+        
+        // Re-apply default collapsed state after a complete progress reset
         collapsedActs = {
           "Act 1": true,
           "Act 2": true,
@@ -766,16 +1009,19 @@
           "Interlude": true,
           "Endgame": true
         };
+        
         localStorage.removeItem('poe2_checked_steps');
         localStorage.removeItem('poe2_checked_gems');
         localStorage.setItem('poe2_collapsed_acts', JSON.stringify(collapsedActs));
 
+        // Reset visual state of all gem checkboxes
         document.querySelectorAll('.gem-checkbox').forEach(cb => {
           cb.checked = false;
           const parentCard = document.getElementById('card-' + cb.id);
           if (parentCard) parentCard.classList.remove('opacity-40');
         });
         
+        // Reset button state
         resetApp.textContent = 'Progress Reset!';
         resetApp.classList.remove('bg-red-600', 'border-red-500', 'text-white');
         resetApp.classList.add('bg-emerald-900/40', 'border-emerald-700', 'text-emerald-400');
@@ -789,10 +1035,13 @@
 
         renderChecklist();
       } else {
+        // First click: Request confirmation
         resetApp.dataset.confirming = "true";
         resetApp.textContent = 'Confirm Reset?';
         resetApp.classList.remove('bg-red-950/40', 'border-red-900/50', 'text-red-400');
         resetApp.classList.add('bg-red-600', 'border-red-500', 'text-white');
+        
+        // Revert automatically if not clicked in 3 seconds
         clearTimeout(confirmTimeout);
         confirmTimeout = setTimeout(() => {
           resetApp.dataset.confirming = "false";
@@ -803,6 +1052,7 @@
       }
     });
 
+    // Copy to Clipboard logic for Vendor Regex box
     const copyBtn = document.getElementById('copyRegexBtn');
     if (copyBtn) {
       copyBtn.addEventListener('click', () => {
@@ -814,9 +1064,15 @@
         el.style.left = '-9999px';
         document.body.appendChild(el);
         el.select();
+        
         let success = false;
-        try { success = document.execCommand('copy'); } catch (err) { console.error('Copy failed', err); }
+        try {
+          success = document.execCommand('copy');
+        } catch (err) {
+          console.error('Copy failed', err);
+        }
         document.body.removeChild(el);
+
         if (success) {
           copyBtn.innerHTML = '<i data-lucide="check" class="w-4 h-4 text-emerald-400"></i>';
           lucide.createIcons();
@@ -828,6 +1084,7 @@
       });
     }
 
+    // Initial Render and setup
     renderChecklist();
     initGemCheckboxes();
     }); // end DOMContentLoaded
